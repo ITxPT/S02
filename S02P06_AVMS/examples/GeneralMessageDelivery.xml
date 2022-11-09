@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ITxPT S02P06 AVMS service - General Message operation XML Example -->
+<GeneralMessageDelivery version="2.1.1">
+  <InfoMessage>
+    <RecordedAtTime>2019-10-24T12:12:12</RecordedAtTime>
+    <ItemIdentifier>a1</ItemIdentifier>
+    <InfoMessageRef>b3</InfoMessageRef>
+    <InfoMessageVersion>745</InfoMessageVersion>
+    <InfoChannelRef>s23</InfoChannelRef>
+    <ValidFromTime>2019-10-24T12:12:12</ValidFromTime>
+    <ValidUntilTime>2019-10-24T12:12:12</ValidUntilTime>
+    <NetworkArea>
+      <StopPointRef>110x</StopPointRef>
+      <LineArea>
+        <LineRef>line1</LineRef>
+        <DirectionRef>dir2</DirectionRef>
+        <StopPointRef>stp3</StopPointRef>
+      </LineArea>
+    </NetworkArea>
+    <Content>
+      <ShortMessage>shrt</ShortMessage>
+      <Message>info</Message>
+      <LongMessage>info long</LongMessage>
+      <TTSMessage>DURÃ©C</TTSMessage>
+    </Content>
+  </InfoMessage>
+  <InfoMessageCancellation>
+    <RecordedAtTime>2019-10-24T12:12:12</RecordedAtTime>
+    <ItemIdentifier>a2</ItemIdentifier>
+    <InfoMessageIdentifier>b4</InfoMessageIdentifier>
+    <InfoMessageRef>b3</InfoMessageRef>
+    <InfoMessageVersion>746</InfoMessageVersion>
+  </InfoMessageCancellation>
+</GeneralMessageDelivery>

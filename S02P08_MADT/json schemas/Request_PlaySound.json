@@ -1,0 +1,39 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://itxtp.org/schemas/Request_PlaySound.json",
+    "type": "object",
+    "title": "ITxPT S02P08 MADT service - MADT PlaySound request JSON Schema Definition Version 2.1.1",
+    "description": "ITxPT service interface for standardized interoperability in public transport - JSON schema",
+    "default": {},
+    "additionalProperties": true,
+    "required": [
+        "req",
+        "soundFlags",
+        "soundId"
+    ],
+    "properties": {
+        "req": {
+            "$id": "#/properties/req",
+            "type": "string",
+            "const": "PlaySound"
+        },
+        "soundFlags": {
+            "$id": "#/properties/soundFlags",
+            "type": "string",
+            "enum": ["00001", "00002", "00010", "10000"]
+        },  
+        "soundId": {
+            "$id": "#/properties/soundId",
+            "type": "string",
+            "examples": [
+                "SystemAsterisk",
+                "SystemExclamation",
+                "SystemExit",
+                "SystemHand",
+                "SystemNotification",
+                "SystemQuestion",
+                "SystemStart"
+            ]
+        }
+    }
+}

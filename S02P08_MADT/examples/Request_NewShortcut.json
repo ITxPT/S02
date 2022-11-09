@@ -1,0 +1,6 @@
+{
+  "req": "NewShortcut",
+  "preferredPos": -1,
+  "iconUrl": "http://icon_service:80/icon_endpoint",
+  "url": "http://shortcut_service:80/shortcut_endpoint"
+}

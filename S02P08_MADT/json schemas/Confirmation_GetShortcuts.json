@@ -1,0 +1,47 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "http://itxtp.org/schemas/Confirmation_GetShortcuts.json",
+    "type": "object",
+    "title": "ITxPT S02P08 MADT service - MADT GetShortcuts response JSON Schema Definition Version 2.1.1",
+    "description": "ITxPT service interface for standardized interoperability in public transport - JSON schema",
+    "default": {},
+    "additionalProperties": true,
+    "required": [
+        "retCode",
+        "shortcuts"
+    ],
+    "properties": {
+        "retCode": {
+            "$id": "#/properties/retCode",
+            "type": "integer",
+            "enum": [0, 1, 2, 3, 4]
+        },
+        "shortcuts": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/shortcutInfo"}
+        }
+    },
+    "$defs": {
+        "shortcutInfo": {
+            "type": "object",
+            "properties": {
+                "shortcutId": {
+                    "type": "integer"
+                },
+                "shortcutPos": {
+                    "type": "integer"
+                },
+                "flags": {
+                    "type": "integer"
+                },
+                "iconUrl": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "required": ["shortcutId", "shortcutPos", "flags", "iconUrl", "url"]
+        }
+    }
+}

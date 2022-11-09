@@ -1,0 +1,24 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://itxtp.org/schemas/Confirmation_NewWebTab.json",
+    "type": "object",
+    "title": "ITxPT S02P08 MADT service - MADT NewWebTab response JSON Schema Definition Version 2.1.1",
+    "description": "ITxPT service interface for standardized interoperability in public transport - JSON schema",
+    "default": {},
+    "additionalProperties": true,
+    "required": [
+        "retCode",
+        "tabId"
+    ],
+    "properties": {
+        "retCode": {
+            "$id": "#/properties/retCode",
+            "type": "integer",
+            "enum": [0, 1, 2, 3, 4]
+        },
+        "tabId": {
+            "$id": "#/properties/tabId",
+            "type": "integer"
+        }
+    }
+}

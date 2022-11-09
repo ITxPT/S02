@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:appinfo>ITxPT S02P06 AVMS service - Connection Monitoring operation XML Schema Definition Version 2.1.1</xs:appinfo>
+    <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
+  </xs:annotation>
+  <!-- Type definitions -->
+  <xs:simpleType name="VersionType">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="2.1.1"/>
+      </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ProtectionStateType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Protected"/>
+      <xs:enumeration value="Cancelled"/>
+      <xs:enumeration value="Not Protected"/>
+      <xs:enumeration value="Topology"/>
+      <xs:enumeration value="Unknown"/>
+    </xs:restriction>
+  </xs:simpleType> 
+  <xs:complexType name="ConnectedVehicleLineInformationType">
+    <xs:sequence>
+      <xs:element name="LineRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="LineName" type="xs:string"/>
+      <xs:element minOccurs="0" name="LineShortName" type="xs:string"/>
+      <xs:element minOccurs="0" name="LineNumber" type="xs:positiveInteger"/>
+      <xs:element minOccurs="0" name="LineTTSName" type="xs:string"/>
+      <xs:element minOccurs="0" name="Direction" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ConnectedVehicleDestinationInformationType">
+    <xs:sequence>
+      <xs:element name="DestinationRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="DestinationName" type="xs:string"/>
+      <xs:element minOccurs="0" name="DestinationShortName" type="xs:string"/>
+      <xs:element minOccurs="0" name="DestinationTTSName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MonitoredConnectionType">
+    <xs:sequence>
+      <xs:element name="RecordedAtTime" type="xs:dateTime"/>
+      <xs:element name="ConnectionRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="CallRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="JourneyPatternRef" type="xs:string"/>
+      <xs:element name="VehicleJourneyRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="VisitNumber" type="xs:positiveInteger"/>
+      <xs:element minOccurs="0" name="Order" type="xs:positiveInteger"/>
+      <xs:element minOccurs="0" name="ExpectedDepartureTime" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="ProtectionState" type="ProtectionStateType"/>
+      <xs:element minOccurs="0" name="TransferTime" type="xs:time"/>
+      <xs:element minOccurs="0" name="ConnectedVehicleCallRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="ConnectedVehicleJourneyRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="ConnectedVehicleExpectedDepartureTime" type="xs:dateTime"/>
+      <xs:element maxOccurs="unbounded" name="ConnectedVehicleLineInformation" type="ConnectedVehicleLineInformationType"/>
+      <xs:element maxOccurs="unbounded" name="ConnectedVehicleDestinationInformation" type="ConnectedVehicleDestinationInformationType"/>
+      <xs:element minOccurs="0" name="ConnectedVehicleTransportMode" type="xs:string"/>
+      <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
+    </xs:sequence>
+  </xs:complexType>  
+  <xs:complexType name="MonitoredConnectionCancellationType">
+    <xs:sequence>
+      <xs:element name="RecordedAtTime" type="xs:dateTime"/>
+      <xs:element name="ConnectionRef" type="xs:string"/>
+      <xs:element name="VehicleJourneyRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- Main element definition -->
+  <xs:element name="ConnectionMonitoringDelivery">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="MonitoredConnection" type="MonitoredConnectionType"/>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="MonitoredConnectionCancellation" type="MonitoredConnectionCancellationType"/>
+        <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
+      </xs:sequence>
+      <xs:attribute name="version" type="VersionType" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

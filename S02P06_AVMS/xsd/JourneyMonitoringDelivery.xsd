@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo>ITxPT S02P06 AVMS service - Journey Monitoring XML Schema Definition Version 2.1.1</xs:appinfo>
+    <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
+  </xs:annotation>
+  <!-- Type definitions -->
+  <xs:simpleType name="VersionType">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="2.1.1"/>
+      </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ProgressRateType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="noProgress"/>
+      <xs:enumeration value="slowProgress"/>
+      <xs:enumeration value="normalProgress"/>
+      <xs:enumeration value="fastProgress"/>
+      <xs:enumeration value="Unknown"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OccupancyType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="full"/>
+      <xs:enumeration value="seatsAvailable"/>
+      <xs:enumeration value="standingAvailable"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="PreviousCallType">
+    <xs:sequence>
+      <xs:element name="StopPointRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="VisitNumber" type="xs:positiveInteger"/>
+      <xs:element name="Order" type="xs:positiveInteger"/>
+      <xs:element name="ActualArrivalTime" type="xs:dateTime"/>
+      <xs:element name="ActualDepartureTime" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PreviousCallsType">
+    <xs:sequence>
+      <xs:element name="PreviousCall" type="PreviousCallType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OnwardCallType">
+    <xs:sequence>
+      <xs:element name="StopPointRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="VisitNumber" type="xs:positiveInteger"/>
+      <xs:element name="Order" type="xs:positiveInteger"/>
+      <xs:element name="PlannedArrivalTime" type="xs:dateTime"/>
+      <xs:element name="ExpectedArrivalTime" type="xs:dateTime"/>
+      <xs:element name="PlannedDepartureTime" type="xs:dateTime"/>
+      <xs:element name="ExpectedDepartureTime" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OnwardCallsType">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="OnwardCall" type="OnwardCallType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MonitoredCallType">
+    <xs:sequence>
+      <xs:element name="StopPointRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="VisitNumber" type="xs:positiveInteger"/>
+      <xs:element name="Order" type="xs:positiveInteger"/>
+      <xs:element name="VehicleAtStop" type="xs:boolean"/>
+      <xs:element name="PlannedArrivalTime" type="xs:dateTime"/>
+      <xs:element name="ExpectedArrivalTime" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="ActualArrivalTime" type="xs:dateTime"/>
+      <xs:element name="PlannedDepartureTime" type="xs:dateTime"/>
+      <xs:element name="ExpectedDepartureTime" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="ActualDepartureTime" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MonitoredJourneyType">
+    <xs:sequence>
+      <xs:element name="RecordedAtTime" type="xs:dateTime"/>
+      <xs:element name="ItemIdentifier" type="xs:string"/>
+      <xs:element name="PatternRef" type="xs:string"/>
+      <xs:element name="JourneyRef" type="xs:string"/>
+      <xs:element minOccurs="0"  name="VehicleJourneyRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="JourneyNote" type="xs:string"/>
+      <xs:element minOccurs="0" name="HeadwayService" type="xs:boolean"/>
+      <xs:element name="OriginPlannedDepartureTime" type="xs:dateTime"/>
+      <xs:element name="DestinationPlannedArrivalTime" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="InCongestion" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="InPanic" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="ProgressRate" type="ProgressRateType"/>
+      <xs:element minOccurs="0" name="Occupancy" type="OccupancyType"/>
+      <xs:element name="Delay" type="xs:integer"/>
+      <xs:element minOccurs="0" name="ProgressStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="ProductCategoryRef" type="xs:string"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceFeatureRef" type="xs:string"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VehicleFeatureRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="PreviousCalls" type="PreviousCallsType"/>
+      <xs:element name="MonitoredCall" type="MonitoredCallType"/>
+      <xs:element minOccurs="0" name="OnwardCalls" type="OnwardCallsType"/>
+      <xs:element minOccurs="0" name="Extension" type="xs:anyType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MonitoredJourneyCancellationType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RecordedAtTime" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="ItemIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="PatternRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="JourneyRef" type="xs:string"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Reason" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- Main element definition -->
+  <xs:element name="JourneyMonitoringDelivery">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="MonitoredJourney" type="MonitoredJourneyType"/>
+        <xs:element minOccurs="0" name="MonitoredJourneyCancellation" type="MonitoredJourneyCancellationType"/>
+        <xs:element minOccurs="0" name="Extension" type="xs:anyType"/>
+      </xs:sequence>
+      <xs:attribute name="version" use="required" type="VersionType"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

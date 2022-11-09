@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:appinfo>ITxPT S02P07 APC service - Passenger Door Count operation XML Schema Definition Version 2.1.1</xs:appinfo>
+    <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
+  </xs:annotation>
+  <!-- Type definitions -->
+  <xs:simpleType name="VersionType">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="2.1.1"/>
+      </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DoorCountQualityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Regular"/>
+      <xs:enumeration value="Defect"/>
+      <xs:enumeration value="Other"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ObjectClassType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Adult"/>
+      <xs:enumeration value="Child"/>
+      <xs:enumeration value="Pram"/>
+      <xs:enumeration value="Bike"/>
+      <xs:enumeration value="Wheelchair"/>
+      <xs:enumeration value="Other"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="PassengerCountingType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ObjectClass" type="ObjectClassType"/>
+      <xs:element name="DoorPassengerIn" type="xs:nonNegativeInteger"/>
+      <xs:element name="DoorPassengerOut" type="xs:nonNegativeInteger"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PassengerDoorCountType">
+    <xs:sequence>
+      <xs:element name="RecordedAtTime" type="xs:dateTime"/>
+      <xs:element name="DoorId" type="xs:nonNegativeInteger"/>
+      <xs:element maxOccurs="unbounded" name="PassengerCounting" type="PassengerCountingType"/>
+      <xs:element minOccurs="0" name="DoorCountQuality" type="DoorCountQualityType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- Main element definition -->
+  <xs:element name="PassengerDoorCountDelivery">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="PassengerDoorCount" type="PassengerDoorCountType"/>
+        <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
+      </xs:sequence>
+      <xs:attribute name="version" type="VersionType" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

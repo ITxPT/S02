@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ITxPT S02P03 GNSSLocation service - GNSSLocation Delivery XML Example -->
+<GNSSLocationDelivery version="2.1.1">
+  <GNSSLocation>
+    <Data>$GPRMC,080530.526,A,4852.655,N,00220.337,E,,,241019,000.0,W*70</Data>  
+    <Latitude>
+      <Degree>48.877583</Degree>
+      <Direction>N</Direction>
+    </Latitude>
+    <Longitude>
+      <Degree>2.338950</Degree>
+      <Direction>E</Direction>
+    </Longitude>
+    <Altitude>12</Altitude>
+    <Time>08:05:30</Time>
+    <Date>2019-10-24</Date>
+    <SpeedOverGround>11.52356</SpeedOverGround>
+    <SignalQuality>aGPS</SignalQuality>
+    <Fix>3D</Fix>
+    <NumberOfSatellites>7</NumberOfSatellites>
+    <HorizontalDilutionOfPrecision>10.01</HorizontalDilutionOfPrecision>
+    <VerticalDilutionOfPrecision>21.3</VerticalDilutionOfPrecision>
+    <TrackDegreeTrue>91.2</TrackDegreeTrue>
+    <TrackDegreeMagnetic>91.0</TrackDegreeMagnetic>
+    <GNSSType>GPS</GNSSType>
+    <GNSSCoordinateSystem>WGS84</GNSSCoordinateSystem>
+  </GNSSLocation>
+  <Extensions />
+</GNSSLocationDelivery>

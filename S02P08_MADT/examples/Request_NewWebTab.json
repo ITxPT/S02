@@ -1,0 +1,7 @@
+{
+  "req": "NewWebTab",
+  "preferredPos": -2,
+  "flags": 1,
+  "iconUrl": "http://icon_service:80/icon_endpoint",
+  "url": "http://web_service:80/shortcut_endpoint"
+}

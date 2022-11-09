@@ -1,0 +1,34 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://itxtp.org/schemas/Request_IAmAlive.json",
+    "type": "object",
+    "title": "ITxPT S02P08 MADT service - MADT IAmAlive request JSON Schema Definition Version 2.1.1",
+    "description": "ITxPT service interface for standardized interoperability in public transport - JSON schema",
+    "default": {},
+    "additionalProperties": true,
+    "required": [
+        "req",
+        "tabId",
+        "shortcutId",
+        "TTL"
+    ],
+    "properties": {
+        "req": {
+            "$id": "#/properties/req",
+            "type": "string",
+            "const":  "IAmAlive"
+        },
+        "tabId": {
+            "$id": "#/properties/tabId",
+            "type": "integer"
+        },
+        "shortcutId": {
+            "$id": "#/properties/shortcutId",
+            "type": "integer"
+        },
+        "TTL": {
+            "$id": "#/properties/TTL",
+            "type": "integer"
+        }
+    }
+}

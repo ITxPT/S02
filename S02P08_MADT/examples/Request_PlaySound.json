@@ -1,0 +1,5 @@
+{
+  "req": "PlaySound",
+  "soundFlags": "00010",
+  "soundId": "SystemAsterisk"
+}

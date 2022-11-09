@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://itxtp.org/schemas/Request_GetSettings.json",
+    "type": "object",
+    "title": "ITxPT S02P08 MADT service - MADT GetSettings request JSON Schema Definition Version 2.1.1",
+    "description": "ITxPT service interface for standardized interoperability in public transport - JSON schema",
+    "default": {},
+    "additionalProperties": true,
+    "required": [
+        "req"
+    ],
+    "properties": {
+        "req": {
+            "$id": "#/properties/req",
+            "type": "string",
+            "const": "GetSettings"
+        }
+    }
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ITxPT S02P07 APC service - Passenger Door Count operation XML Example -->
+<PassengerDoorCountDelivery version="2.1.1">
+  <PassengerDoorCount>
+    <RecordedAtTime>2012-12-13T12:12:12</RecordedAtTime>
+    <DoorId>1</DoorId>
+    <PassengerCounting>
+      <ObjectClass>Adult</ObjectClass>
+      <DoorPassengerIn>2</DoorPassengerIn>
+      <DoorPassengerOut>1</DoorPassengerOut>
+    </PassengerCounting>
+    <PassengerCounting>
+      <ObjectClass>Child</ObjectClass>
+      <DoorPassengerIn>1</DoorPassengerIn>
+      <DoorPassengerOut>1</DoorPassengerOut>
+    </PassengerCounting>
+    <PassengerCounting>
+      <ObjectClass>Pram</ObjectClass>
+      <DoorPassengerIn>1</DoorPassengerIn>
+      <DoorPassengerOut>1</DoorPassengerOut>
+    </PassengerCounting>
+    <DoorCountQuality>Regular</DoorCountQuality>
+  </PassengerDoorCount>
+</PassengerDoorCountDelivery>

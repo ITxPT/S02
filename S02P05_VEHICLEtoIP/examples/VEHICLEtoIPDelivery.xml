@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ITxPT S02P05 VEHICLEtoIP service - VEHICLEtoIP Delivery XML Example -->
+<VEHICLEtoIPDelivery version="2.1.1">
+  <VEHICLEtoIP>
+    <RecordedAtTime>2019-10-24T12:12:12</RecordedAtTime>
+    <Odospeed>123.45</Odospeed>
+    <Ododistancetotal>745</Ododistancetotal>
+    <Ododistance>745</Ododistance>
+    <Odofault>true</Odofault>
+    <DoorsStatus>AllDoorsClosedLocked</DoorsStatus>
+    <DoorsControl>
+      <Door>
+        <DoorID>745</DoorID>
+        <DoorStatus>Closed</DoorStatus>
+      </Door>
+    </DoorsControl>
+    <ActiveCabin>NoCab</ActiveCabin>
+    <PresenceHV>true</PresenceHV>
+    <StopRequest>true</StopRequest>
+    <VehicleType>Bus</VehicleType>
+    <VehicleCapacity>745</VehicleCapacity>
+    <VehicleNumber>str1234</VehicleNumber>
+    <VehicleMode>true</VehicleMode>
+    <VehicleOrder>745</VehicleOrder>
+    <Extensions>str1234</Extensions>
+  </VEHICLEtoIP>
+</VEHICLEtoIPDelivery>

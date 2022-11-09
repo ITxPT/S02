@@ -1,0 +1,5 @@
+{
+  "req": "NavigateTo",
+  "tabId": 10,
+  "url": "http://service_ip:80/endpoint"
+}

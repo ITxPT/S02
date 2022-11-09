@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ITxPT S02P06 AVMS service - Planned Pattern operation XML Example -->
+<PlannedPatternDelivery version="2.1.1">
+  <PlannedPattern>
+    <RecordedAtTime>2019-10-24T12:12:12</RecordedAtTime>
+    <PatternRef>9308</PatternRef>
+    <VehicleJourneyRef>1234</VehicleJourneyRef>
+    <OperatingDayDate>2012-12-13</OperatingDayDate>
+    <RouteRef>10</RouteRef>
+    <LineRef>93</LineRef>
+    <PublishedLineLabel>Teor 3</PublishedLineLabel>
+    <PublishedTtsLineLabel>Teor 3</PublishedTtsLineLabel>
+    <DirectionRef>123</DirectionRef>
+    <ExternalLineRef>T3</ExternalLineRef>
+    <OriginName>Bizet</OriginName>
+    <OriginShortName>Bizet</OriginShortName>
+    <OriginLongName>Bizet</OriginLongName>
+    <OriginTtsName>BIZÃ©T</OriginTtsName>
+    <Via>
+      <PlaceRef>11525</PlaceRef>
+      <PlaceName>Eglise St-Jean</PlaceName>
+    </Via>
+    <DestinationPlaceRef>12180</DestinationPlaceRef>
+    <DestinationName>Durecu-Lavoisier</DestinationName>
+    <DestinationShortName>Durecu-Lavoisier</DestinationShortName>
+    <DestinationLongName>Durecu-Lavoisier</DestinationLongName>
+    <DestinationTtsName>DURÃ©CU-LAVOISIER</DestinationTtsName>
+    <PatternStops>
+      <PatternStop>
+        <StopPointRef>10164</StopPointRef>
+        <Order>1</Order>
+        <StopPointName>Bizet</StopPointName>
+        <StopPointShortName>Bizet</StopPointShortName>
+        <StopPointLongName>Bizet</StopPointLongName>
+        <StopPointTtsName>BIZÃ©T</StopPointTtsName>
+      </PatternStop>
+      <PatternStop>
+        <StopPointRef>11524</StopPointRef>
+        <Order>2</Order>
+        <StopPointName>Eglise St-Jean</StopPointName>
+        <StopPointShortName>Eglise St-Jean</StopPointShortName>
+        <StopPointLongName>Eglise St-Jean</StopPointLongName>
+        <StopPointTtsName>EGLISE SAINT-JEAN</StopPointTtsName>
+      </PatternStop>
+<!-- […] -->
+      <PatternStop>
+        <StopPointRef>12180</StopPointRef>
+        <Order>2</Order>
+        <StopPointName>Durecu-Lavoisier</StopPointName>
+        <StopPointShortName>Durecu-Lavoisier</StopPointShortName>
+        <StopPointLongName>Durecu-Lavoisier</StopPointLongName>
+        <StopPointTtsName>DURÃ©CU-LAVOISIER</StopPointTtsName>
+      </PatternStop>
+    </PatternStops>
+    <PlannedPatternNote>Note</PlannedPatternNote>
+  </PlannedPattern>
+</PlannedPatternDelivery>

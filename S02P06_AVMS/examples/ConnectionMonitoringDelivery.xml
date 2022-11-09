@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ITxPT S02P06 AVMS service - Connection Monitoring operation XML Example -->
+<ConnectionMonitoringDelivery version="2.1.1">
+  <MonitoredConnection>
+    <RecordedAtTime>2019-10-24T12:12:12</RecordedAtTime>
+    <ConnectionRef>s120</ConnectionRef>
+    <CallRef>call6</CallRef>
+    <JourneyPatternRef>jp2</JourneyPatternRef>
+    <VehicleJourneyRef>vj81</VehicleJourneyRef>
+    <VisitNumber>3</VisitNumber>
+    <Order>14</Order>
+    <ExpectedDepartureTime>2019-10-24T12:12:12</ExpectedDepartureTime>
+    <ProtectionState>Protected</ProtectionState>
+    <TransferTime>12:12:12</TransferTime>
+    <ConnectedVehicleCallRef>cvcr5</ConnectedVehicleCallRef>
+    <ConnectedVehicleJourneyRef>cvj7</ConnectedVehicleJourneyRef>
+    <ConnectedVehicleExpectedDepartureTime>2019-10-24T12:12:12</ConnectedVehicleExpectedDepartureTime>
+    <ConnectedVehicleLineInformation>
+      <LineRef>l12</LineRef>
+      <LineName>line 12</LineName>
+      <LineShortName>line12</LineShortName>
+      <LineNumber>12</LineNumber>
+      <LineTTSName>DURÃ©C</LineTTSName>
+      <Direction>d2</Direction>
+    </ConnectedVehicleLineInformation>
+    <ConnectedVehicleDestinationInformation>
+      <DestinationRef>dest3</DestinationRef>
+      <DestinationName>terminus 1</DestinationName>
+      <DestinationShortName>term1</DestinationShortName>
+      <DestinationTTSName>BIZÃ©T</DestinationTTSName>
+    </ConnectedVehicleDestinationInformation>
+    <ConnectedVehicleTransportMode>cvtm3</ConnectedVehicleTransportMode>
+  </MonitoredConnection>
+  <MonitoredConnectionCancellation>
+    <RecordedAtTime>2019-10-24T12:12:12</RecordedAtTime>
+    <ConnectionRef>cref1</ConnectionRef>
+    <VehicleJourneyRef>vjref9</VehicleJourneyRef>
+  </MonitoredConnectionCancellation>
+</ConnectionMonitoringDelivery>

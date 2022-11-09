@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ITxPT S02P04 FMStoIP configuration service - Get PGN operation XML Example -->
+<GetPGN>
+   <PGNId>F001</PGNId>
+   <PGNId>F000</PGNId>
+   <PGNId>FEF1</PGNId>
+</GetPGN>

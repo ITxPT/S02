@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ITxPT S02P01 Inventory service - Modules Delivery XML Example -->
+<ModulesDelivery version="2.1.1">
+  <Module>
+    <Type>Communication Gateway</Type>
+    <Model>Model26</Model>
+    <Manufacturer>CompanyABC</Manufacturer>
+    <SerialNumber>0123456789</SerialNumber>
+    <SoftwareVersion>v1.2.3</SoftwareVersion>
+    <HardwareVersion>Revision D</HardwareVersion>
+    <MACAddress>00:05:68:02:66:E5</MACAddress>
+    <EcoMode>ECO0</EcoMode>
+    <Status>0</Status>
+    <XStatus page="1" timestamp="2019-10-24T12:12:12">C0FFFFFFFFFFFFFF</XStatus>
+    <StatusList page="1"> <!--Standard extended status (xstatus) list block -->
+      <Item code="1">Generic module status</Item>
+      <Item code="2">Consolidated Submodule status</Item>
+      <Item code="3">Low uptime</Item>
+      <Item code="4">High uptime</Item>
+      <Item code="5">Free RAM memory</Item>
+      <Item code="6">Free storage memory</Item>
+      <Item code="7">root filesystem</Item>
+      <Item code="8">application filsystem</Item>
+      <Item code="9">filesystem load</Item>
+      <Item code="10">Missing file</Item>
+      <Item code="11">CPU load</Item>
+      <Item code="12">Network load</Item>
+      <Item code="13">Tampering</Item>
+      <Item code="14">Backoffice connection</Item>
+      <Item code="15">WAN connection</Item>
+      <Item code="16">Configuration</Item>
+      <Item code="17">Running applications</Item>
+      <Item code="18">System temperature</Item>
+      <Item code="19">Time sync</Item>
+      <Item code="20">Power supply</Item>
+    </StatusList>
+    <SubModules>
+      <Type>FMS-interface</Type>
+      <Model>ModelA79</Model>
+      <Manufacturer>Company76G</Manufacturer>
+      <SerialNumber>2642967405</SerialNumber>
+      <SoftwareVersion>sw:118, dcf: 111125</SoftwareVersion>
+      <HardwareVersion>6605-214</HardwareVersion>
+      <Status>0</Status>
+      <XStatus page="1" timestamp="2019-10-24T12:12:12">C0FFFFFFFFFFFFFF </XStatus>
+    </SubModules>
+    <Services>
+      <ServiceName>inventory</ServiceName>
+      <ServiceType>itxpt_http</ServiceType>
+    </Services>
+    <Services>
+      <ServiceName>time</ServiceName>
+      <ServiceType>sntp</ServiceType>
+    </Services>
+    <Services>
+      <ServiceName>gnsslocation</ServiceName>
+      <ServiceType>itxpt_multicast</ServiceType>
+    </Services>
+  </Module>
+  <Extensions/>
+</ModulesDelivery>

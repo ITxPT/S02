@@ -1,0 +1,7 @@
+{
+  "req": "NewVNCTab",
+  "preferredPos": -4,
+  "flags": 1,
+  "iconUrl": "http://icon_service:80/icon_endpoint",
+  "params": "vnc_server:5900"
+}

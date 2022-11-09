@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo>ITxPT S02P06 AVMS service - Planned Pattern operation XML Schema Definition Version 2.1.1</xs:appinfo>
+    <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
+  </xs:annotation>
+  <!-- Type definitions -->
+  <xs:simpleType name="VersionType">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="2.1.1"/>
+      </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ArrivalBoardingActivityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="alighting"/>
+      <xs:enumeration value="noAlighting"/>
+      <xs:enumeration value="passthru"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DepartureBoardingActivityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="boarding"/>
+      <xs:enumeration value="noBoarding"/>
+      <xs:enumeration value="passthru"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ViaType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PlaceRef" type="xs:string"/>
+      <xs:element name="PlaceName" type="xs:string"/>
+      <xs:element minOccurs="0" name="PlaceShortName" type="xs:string"/>
+      <xs:element minOccurs="0" name="PlaceLongName" type="xs:string"/>
+      <xs:element minOccurs="0" name="PlaceTtsName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PatternStopType">
+    <xs:sequence>
+      <xs:element name="StopPointRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="VisitNumber" type="xs:positiveInteger"/>
+      <xs:element name="Order" type="xs:positiveInteger"/>
+      <xs:element name="StopPointName" type="xs:string"/>
+      <xs:element minOccurs="0" name="StopPointShortName" type="xs:string"/>
+      <xs:element minOccurs="0" name="StopPointLongName" type="xs:string"/>
+      <xs:element minOccurs="0" name="StopPointTtsName" type="xs:string"/>
+      <xs:element minOccurs="0" name="ExtraCall" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="CancelledCall" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="DivertedCall" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="NoCall" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="BoardingStretch" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="RequestStop" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="DestinationDisplay" type="xs:string"/>
+      <xs:element minOccurs="0" name="DestinationShortDisplay" type="xs:string"/>
+      <xs:element minOccurs="0" name="DestinationLongDisplay" type="xs:string"/>
+      <xs:element minOccurs="0" name="DestinationTtsContent" type="xs:string"/>
+      <xs:element minOccurs="0" name="ExternalDestinationRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="LineRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="PublishedLineLabel" type="xs:string"/>
+      <xs:element minOccurs="0" name="PublishedTtsLineLabel" type="xs:string"/>
+      <xs:element minOccurs="0" name="LineShortName" type="xs:string"/>
+      <xs:element minOccurs="0" name="LineName" type="xs:string"/>
+      <xs:element minOccurs="0" name="LineLongName" type="xs:string"/>
+      <xs:element minOccurs="0" name="ArrivalPlatformName" type="xs:string"/>
+      <xs:element minOccurs="0" name="ArrivalBoardingActivity" type="ArrivalBoardingActivityType"/>
+      <xs:element minOccurs="0" name="DeparturePlatformName" type="xs:string"/>
+      <xs:element minOccurs="0" name="DepartureBoardingActivity" type="DepartureBoardingActivityType"/>
+      <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PatternStopsType">
+    <xs:sequence>
+      <xs:element minOccurs="2" maxOccurs="unbounded" name="PatternStop" type="PatternStopType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PlannedPatternType">
+    <xs:sequence>
+      <xs:element name="RecordedAtTime" type="xs:dateTime"/>
+      <xs:element name="PatternRef" type="xs:string"/>
+      <xs:element name="VehicleJourneyRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="OperatingDayDate" type="xs:date"/>
+      <xs:element name="RouteRef" type="xs:string"/>
+      <xs:element name="LineRef" type="xs:string"/>
+      <xs:element name="PublishedLineLabel" type="xs:string"/>
+      <xs:element name="PublishedTtsLineLabel" type="xs:string"/>
+      <xs:element minOccurs="0" name="LineShortName" type="xs:string"/>
+      <xs:element minOccurs="0" name="LineName" type="xs:string"/>
+      <xs:element minOccurs="0" name="LineLongName" type="xs:string"/>
+      <xs:element name="DirectionRef" type="xs:string"/>
+      <xs:element name="ExternalLineRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="OriginPlaceRef" type="xs:string"/>
+      <xs:element name="OriginName" type="xs:string"/>
+      <xs:element minOccurs="0" name="OriginShortName" type="xs:string"/>
+      <xs:element minOccurs="0" name="OriginLongName" type="xs:string"/>
+      <xs:element minOccurs="0" name="OriginTtsName" type="xs:string"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Via" type="ViaType"/>
+      <xs:element minOccurs="0" name="DestinationPlaceRef" type="xs:string"/>
+      <xs:element name="DestinationName" type="xs:string"/>
+      <xs:element minOccurs="0" name="DestinationShortName" type="xs:string"/>
+      <xs:element minOccurs="0" name="DestinationLongName" type="xs:string"/>
+      <xs:element minOccurs="0" name="DestinationTtsName" type="xs:string"/>
+      <xs:element name="PatternStops" type="PatternStopsType"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PlannedPatternNote" type="xs:string"/>
+      <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- Main element definition -->
+  <xs:element name="PlannedPatternDelivery">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="2" name="PlannedPattern" type="PlannedPatternType"/>
+        <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
+      </xs:sequence>
+      <xs:attribute name="version" use="required" type="VersionType"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

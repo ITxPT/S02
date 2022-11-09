@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo>ITxPT S02P06 AVMS service - Run Monitoring operation XML Schema Definition Version 2.1.1</xs:appinfo>
+    <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
+  </xs:annotation>
+  <!-- Type definitions -->
+  <xs:simpleType name="VersionType">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="2.1.1"/>
+      </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="RunStateType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DeadRun"/>
+      <xs:enumeration value="RunToPattern"/>
+      <xs:enumeration value="RunPattern"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PatternRunTypeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ServiceJourneyPattern"/>
+      <xs:enumeration value="DeadRunPattern"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="RunningPatternStateType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OnDiversion"/>
+      <xs:enumeration value="OutOfRoute"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="RunInfoType">
+    <xs:sequence>
+      <xs:element name="RunState" type="RunStateType"/>
+      <xs:element name="PatternRunType" type="PatternRunTypeType"/>
+      <xs:element name="JourneyPatternRef" type="xs:string"/>
+      <xs:element name="VehicleJourneyRef" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MonitoredRunStateType">
+    <xs:sequence>
+      <xs:element name="RecordedAtTime" type="xs:dateTime"/>
+      <xs:element name="MonitoredBlockRef" type="xs:string"/>
+      <xs:element name="CurrentRunInfo" type="RunInfoType"/>
+      <xs:element minOccurs="0" name="RunningPatternState" type="RunningPatternStateType"/>
+      <xs:element minOccurs="0" name="NextRunInfo" type="RunInfoType"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MonitoredRunStateNote" type="xs:string"/>
+      <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- Main element definition -->
+  <xs:element name="RunMonitoringDelivery">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="MonitoredRunState" type="MonitoredRunStateType"/>
+        <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
+      </xs:sequence>
+      <xs:attribute name="version" use="required" type="VersionType"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

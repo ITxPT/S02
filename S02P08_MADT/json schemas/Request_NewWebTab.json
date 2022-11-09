@@ -1,0 +1,40 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://itxtp.org/schemas/Request_NewWebTab.json",
+    "type": "object",
+    "title": "ITxPT S02P08 MADT service - MADT NewWebTab request JSON Schema Definition Version 2.1.1",
+    "description": "ITxPT service interface for standardized interoperability in public transport - JSON schema",
+    "default": {},
+    "additionalProperties": true,
+    "required": [
+        "req",
+        "preferredPos",
+        "flags",
+        "iconUrl",
+        "url"
+    ],
+    "properties": {
+        "req": {
+            "$id": "#/properties/req",
+            "type": "string",
+            "const": "NewWebTab"
+        },
+        "preferredPos": {
+            "$id": "#/properties/preferredPos",
+            "type": "integer"
+        },
+        "flags": {
+            "$id": "#/properties/flags",
+            "type": "integer",
+            "enum": [1, 8]
+        },
+        "iconUrl": {
+            "$id": "#/properties/iconUrl",
+            "type": "string"
+        },
+        "url": {
+            "$id": "#/properties/url",
+            "type": "string"
+        }
+    }
+}

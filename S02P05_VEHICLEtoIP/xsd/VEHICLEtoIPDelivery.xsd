@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo>ITxPT S02P05 VEHICLEtoIP service - VEHICLEtoIP Delivery XML Schema Definition Version 2.1.1</xs:appinfo>
+    <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
+  </xs:annotation>
+  <!-- Type definitions -->
+  <xs:simpleType name="VersionType">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="2.1.1"/>
+      </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DoorsStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AllDoorsClosedLocked"/>
+      <xs:enumeration value="DoorUnlocked"/>
+      <xs:enumeration value="DoorOpen"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DoorStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Closed"/>
+      <xs:enumeration value="Open"/>
+      <xs:enumeration value="Error"/>
+      <xs:enumeration value="NotAvailable"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ActiveCabinType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NoCab"/>
+      <xs:enumeration value="Cab1"/>
+      <xs:enumeration value="Cab2"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VehicleTypeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Bus"/>
+      <xs:enumeration value="Tram"/>
+      <xs:enumeration value="Ferry"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DoorsControlType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Door" type="DoorType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DoorType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DoorID" type="xs:positiveInteger"/>
+      <xs:element minOccurs="0" name="DoorStatus" type="DoorStatusType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VEHICLEtoIPType">
+    <xs:sequence>
+      <xs:element name="RecordedAtTime" type="xs:dateTime"/>
+      <xs:element name="Odospeed" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Ododistancetotal" type="xs:positiveInteger"/>
+      <xs:element name="Ododistance" type="xs:positiveInteger"/>
+      <xs:element name="Odofault" type="xs:boolean"/>
+      <xs:element name="DoorsStatus" type="DoorsStatusType"/>
+      <xs:element name="DoorsControl" type="DoorsControlType"/>
+      <xs:element name="ActiveCabin" type="ActiveCabinType"/>
+      <xs:element name="PresenceHV" type="xs:boolean"/>
+      <xs:element name="StopRequest" type="xs:boolean"/>
+      <xs:element name="VehicleType" type="VehicleTypeType"/>
+      <xs:element minOccurs="0" name="VehicleCapacity" type="xs:positiveInteger"/>
+      <xs:element name="VehicleNumber" type="xs:string"/>
+      <xs:element name="VehicleMode" type="xs:boolean"/>
+      <xs:element name="VehicleOrder" type="xs:positiveInteger"/>
+      <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- Main element definition -->
+  <xs:element name="VEHICLEtoIPDelivery">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="VEHICLEtoIP" type="VEHICLEtoIPType"/>
+      </xs:sequence>
+      <xs:attribute name="version" use="required" type="VersionType"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

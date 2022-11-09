@@ -1,0 +1,7 @@
+{
+  "retCode": 0,
+  "shortcuts": [
+    {"shortcutId":12,"shortcutPos":1,"flags":0,"iconUrl":"http://icon_service:80/icon_endpoint1","url":"http://shortcut_service:80/shortcut_endpoint1"},
+    {"shortcutId":32,"shortcutPos":3,"flags":0,"iconUrl":"http://icon_service:80/icon_endpoint2","url":"http://shortcut_service:80/shortcut_endpoint2"}
+  ]
+}

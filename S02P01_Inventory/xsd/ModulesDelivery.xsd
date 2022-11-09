@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:annotation>
+      <xs:appinfo>ITxPT S02P01 Module Inventory service - Modules Delivery XML Schema Definition Version 2.1.1</xs:appinfo>
+      <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
+  </xs:annotation>
+  <!-- Type definitions -->
+  <xs:simpleType name="VersionType">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="2.1.1"/>
+      </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MACAddressType">
+    <xs:restriction base="xs:string">
+    <xs:pattern value="[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}"/>
+  </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="StatusListType">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Item" type="ItemType"/>
+    </xs:sequence>
+    <xs:attribute name="page" type="xs:positiveInteger" use="required" />
+  </xs:complexType>
+  <xs:complexType name="XStatusType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="page" type="xs:positiveInteger" use="required" />
+        <xs:attribute name="timestamp" type="xs:dateTime" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="SubModulesType">
+    <xs:sequence>
+      <xs:element name="Type" type="xs:string"/>
+      <xs:element name="Model" type="xs:string"/>
+      <xs:element name="Manufacturer" type="xs:string"/>
+      <xs:element name="SerialNumber" type="xs:string"/>
+      <xs:element name="SoftwareVersion" type="xs:string"/>
+      <xs:element name="HardwareVersion" type="xs:string"/>
+      <xs:element name="Status" type="xs:string"/>
+      <xs:element minOccurs="0" name="XStatus" type="XStatusType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ServiceNameType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="inventory"/>
+      <xs:enumeration value="time"/>
+      <xs:enumeration value="gnsslocation"/>
+      <xs:enumeration value="fmstoip"/>
+      <xs:enumeration value="vehicletoip"/>
+      <xs:enumeration value="avms"/>
+      <xs:enumeration value="apc"/>
+      <xs:enumeration value="madt"/>
+      <xs:enumeration value="mqtt-broker"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ServiceTypeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="itxpt_socket"/>
+      <xs:enumeration value="itxpt_http"/>
+      <xs:enumeration value="sntp"/>
+      <xs:enumeration value="itxpt_multicast"/>
+      <xs:enumeration value="mqtt"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ServicesType">
+    <xs:sequence>
+      <xs:element name="ServiceName" type="ServiceNameType"/>
+      <xs:element name="ServiceType" type="ServiceTypeType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ItemType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="code" type="xs:positiveInteger"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ModuleType">
+    <xs:sequence>
+      <xs:element name="Type" type="xs:string"/>
+      <xs:element name="Model" type="xs:string"/>
+      <xs:element name="Manufacturer" type="xs:string"/>
+      <xs:element name="SerialNumber" type="xs:string"/>
+      <xs:element name="SoftwareVersion" type="xs:string"/>
+      <xs:element name="HardwareVersion" type="xs:string"/>
+      <xs:element name="MACAddress" type="MACAddressType"/>
+      <xs:element minOccurs="0" name="EcoMode" type="xs:string"/>
+      <xs:element name="Status" type="xs:string"/>
+      <xs:element minOccurs="0" name="XStatus" type="XStatusType"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StatusList" type="StatusListType"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SubModules" type="SubModulesType"/>
+      <xs:element minOccurs="1" maxOccurs="unbounded" name="Services" type="ServicesType"/>
+      <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Main element definition -->
+  <xs:element name="ModulesDelivery">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Module" type="ModuleType"/>
+        <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
+      </xs:sequence>
+      <xs:attribute name="version" use="required" type="VersionType"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+
+  

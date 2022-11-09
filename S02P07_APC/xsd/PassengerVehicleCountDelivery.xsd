@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo>ITxPT S02P07 APC service - Passenger Vehicle Count operation XML Schema Definition Version 2.1.1</xs:appinfo>
+    <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
+  </xs:annotation>
+  <!-- Type definitions -->
+  <xs:simpleType name="VersionType">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="2.1.1"/>
+      </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ObjectClassType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Adult"/>
+      <xs:enumeration value="Child"/>
+      <xs:enumeration value="Pram"/>
+      <xs:enumeration value="Bike"/>
+      <xs:enumeration value="Wheelchair"/>
+      <xs:enumeration value="Other"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VehicleCountQualityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Regular"/>
+      <xs:enumeration value="Defect"/>
+      <xs:enumeration value="Other"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="VehicleCountingType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ObjectClass" type="ObjectClassType"/>
+      <xs:element name="VehiclePassengerIn" type="xs:nonNegativeInteger"/>
+      <xs:element name="VehiclePassengerOut" type="xs:nonNegativeInteger"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PassengerVehicleCountType">
+    <xs:sequence>
+      <xs:element name="RecordedAtTime" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="StopPointRef" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" name="VehicleCounting" type="VehicleCountingType"/>
+      <xs:element minOccurs="0" name="VehicleCountQuality" type="VehicleCountQualityType"/>
+      <xs:element name="VehicleOccupancy" type="xs:nonNegativeInteger"/>
+      <xs:element minOccurs="0" name="VehicleOccupancyRatio" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Main element definition -->
+  <xs:element name="PassengerVehicleCountDelivery">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="PassengerVehicleCount" type="PassengerVehicleCountType"/>
+      </xs:sequence>
+      <xs:attribute name="version" use="required" type="VersionType"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

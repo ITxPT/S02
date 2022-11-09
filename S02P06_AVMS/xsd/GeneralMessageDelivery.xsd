@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo>ITxPT S02P06 AVMS service - General Message operation XML Schema Definition Version 2.1.1</xs:appinfo>
+    <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
+  </xs:annotation>
+  <!-- Type definitions -->
+  <xs:simpleType name="VersionType">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="2.1.1"/>
+      </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="LineAreaType">
+    <xs:sequence>
+      <xs:element name="LineRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="DirectionRef" type="xs:string"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StopPointRef" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NetworkAreaType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StopPointRef" type="xs:string"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LineArea" type="LineAreaType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContentType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ShortMessage" type="xs:string"/>
+      <xs:element name="Message" type="xs:string"/>
+      <xs:element minOccurs="0" name="LongMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="TTSMessage" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InfoMessageType">
+    <xs:sequence>
+      <xs:element name="RecordedAtTime" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="ItemIdentifier" type="xs:string"/>
+      <xs:element name="InfoMessageRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="InfoMessageVersion" type="xs:positiveInteger"/>
+      <xs:element minOccurs="0" name="InfoChannelRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="ValidFromTime" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="ValidUntilTime" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="NetworkArea" type="NetworkAreaType"/>
+      <xs:element name="Content" type="ContentType"/>
+      <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InfoMessageCancellationType">
+    <xs:sequence>
+      <xs:element name="RecordedAtTime" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="ItemIdentifier" type="xs:string"/>
+      <xs:element name="InfoMessageIdentifier" type="xs:string"/>
+      <xs:element name="InfoMessageRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="InfoMessageVersion" type="xs:positiveInteger"/>
+      <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- Main element definition -->
+  <xs:element name="GeneralMessageDelivery">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="InfoMessage" type="InfoMessageType"/>
+        <xs:element maxOccurs="unbounded" name="InfoMessageCancellation" type="InfoMessageCancellationType"/>
+        <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
+      </xs:sequence>
+      <xs:attribute name="version" use="required" type="VersionType"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ITxPT S02P06 AVMS service - Pattern Monitoring operation XML Example -->
+<PatternMonitoringDelivery version="2.1.1">
+  <MonitoredPattern>
+    <RecordedAtTime>2019-10-24T12:12:12</RecordedAtTime>
+    <ItemIdentifier>9</ItemIdentifier>
+    <PatternRef>9311</PatternRef>
+    <MonitoredCallRef>
+      <StopPointRef>12159</StopPointRef>
+      <VisitNumber>1234</VisitNumber>
+      <Order>1</Order>
+      <VehicleAtStop>true</VehicleAtStop>
+    </MonitoredCallRef>
+    <OnwardCalls>
+      <OnwardCallRef>
+        <StopPointRef>11759</StopPointRef>
+        <Order>2</Order>
+      </OnwardCallRef>
+      <!-- […] -->
+      <OnwardCallRef>
+        <StopPointRef>10164</StopPointRef>
+        <Order>11</Order>
+      </OnwardCallRef>
+    </OnwardCalls>
+    <MonitoredPatternNote>Note</MonitoredPatternNote>
+  </MonitoredPattern>
+  <MonitoredPatternCancellation>
+    <RecordedAtTime>2019-10-24T12:12:12</RecordedAtTime>
+    <ItemIdentifier>10</ItemIdentifier>
+    <PlannedPatternRef>9310</PlannedPatternRef>
+    <Reason>Reason</Reason>
+  </MonitoredPatternCancellation>
+</PatternMonitoringDelivery>

@@ -1,0 +1,46 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://itxtp.org/schemas/Confirmation_GetSettings.json",
+    "type": "object",
+    "title": "ITxPT S02P08 MADT service - MADT GetSettings response JSON Schema Definition Version 2.1.1",
+    "description": "ITxPT service interface for standardized interoperability in public transport - JSON schema",
+    "default": {},
+    "additionalProperties": true,
+    "required": [
+        "retCode",
+        "volume",
+        "brightness",
+        "contrast",
+        "language"
+    ],
+    "properties": {
+        "retCode": {
+            "$id": "#/properties/retCode",
+            "type": "integer",
+            "enum": [0, 1, 2, 3, 4]
+        },
+        "volume": {
+            "$id": "#/properties/volume",
+            "type": "string"
+        },
+        "brightness": {
+            "$id": "#/properties/brightness",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255
+        },
+        "contrast": {
+            "$id": "#/properties/contrast",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255
+        },
+        "language": {
+            "$id": "#/properties/language",
+            "type": "string",
+            "description": "alpha2 code according to ISO 639-1",
+            "examples": [
+                "en"
+            ]
+        }    }
+}

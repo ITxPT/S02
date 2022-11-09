@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ITxPT S02P06 AVMS service - Vehicle Monitoring operation XML Example -->
+<VehicleMonitoringDelivery version="2.1.1">
+  <VehicleActivity>
+    <RecordedAtTime>2019-10-24T12:12:12</RecordedAtTime>
+    <ItemIdentifier>9</ItemIdentifier>
+    <JourneyPatternRef>9311</JourneyPatternRef>
+    <VehicleJourneyRef>1234</VehicleJourneyRef>
+    <ProgressBetweenStops>
+      <PreviousCallRef>
+        <StopPointRef>12159</StopPointRef>
+        <Order>7</Order>
+      </PreviousCallRef>
+      <MonitoredCallRef>
+        <StopPointRef>11759</StopPointRef>
+        <Order>8</Order>
+        <VehicleAtStop>true</VehicleAtStop>
+      </MonitoredCallRef>
+      <LinkDistance>123.45</LinkDistance>
+      <Percentage>98.12</Percentage>
+    </ProgressBetweenStops>
+    <VehicleActivityNote>Note</VehicleActivityNote>
+  </VehicleActivity>
+  <VehicleActivityCancellation>
+    <RecordedAtTime>2019-10-24T12:12:12</RecordedAtTime>
+    <ItemIdentifier>9310</ItemIdentifier>
+    <PatternRef>123</PatternRef>
+    <Reason>Reason</Reason>
+  </VehicleActivityCancellation>
+</VehicleMonitoringDelivery>
