@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ITxPT S02P00 Networks and Protocols - Subscribe response XML Example -->
+<SubscribeResponse>
+    <Active>true</Active>
+</SubscribeResponse>
