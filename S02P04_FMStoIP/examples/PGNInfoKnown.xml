@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ITxPT S02P04 FMStoIP configuration service - operation pgninfoknown XML Example -->
+<PGNInfoKnown>
+    <PGNId>F004</PGNId>
+    <PGNId>FEE5</PGNId>
+</PGNInfoKnown>

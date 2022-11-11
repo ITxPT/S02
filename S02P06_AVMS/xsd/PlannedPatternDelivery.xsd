@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
   <xs:annotation>
-    <xs:appinfo>ITxPT S02P06 AVMS service - Planned Pattern operation XML Schema Definition Version 2.1.1</xs:appinfo>
+    <xs:appinfo>ITxPT S02P06 AVMS service - Planned Pattern operation XML Schema Definition Version 2.2.0</xs:appinfo>
     <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
   </xs:annotation>
   <!-- Type definitions -->
   <xs:simpleType name="VersionType">
       <xs:restriction base="xs:string">
-        <xs:enumeration value="2.1.1"/>
+        <xs:enumeration value="2.2.0"/>
       </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="ISO639-3String">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[A-Za-z]{3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="LanguageStringType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+          <xs:attribute name="language" use="optional" type="ISO639-3String">
+          </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType> 
   <xs:simpleType name="ArrivalBoardingActivityType">
     <xs:restriction base="xs:string">
       <xs:enumeration value="alighting"/>
@@ -27,10 +40,10 @@
   <xs:complexType name="ViaType">
     <xs:sequence>
       <xs:element minOccurs="0" name="PlaceRef" type="xs:string"/>
-      <xs:element name="PlaceName" type="xs:string"/>
-      <xs:element minOccurs="0" name="PlaceShortName" type="xs:string"/>
-      <xs:element minOccurs="0" name="PlaceLongName" type="xs:string"/>
-      <xs:element minOccurs="0" name="PlaceTtsName" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" name="PlaceName" type="LanguageStringType"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PlaceShortName" type="LanguageStringType"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PlaceLongName" type="LanguageStringType"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PlaceTtsName" type="LanguageStringType"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="PatternStopType">
@@ -38,10 +51,10 @@
       <xs:element name="StopPointRef" type="xs:string"/>
       <xs:element minOccurs="0" name="VisitNumber" type="xs:positiveInteger"/>
       <xs:element name="Order" type="xs:positiveInteger"/>
-      <xs:element name="StopPointName" type="xs:string"/>
-      <xs:element minOccurs="0" name="StopPointShortName" type="xs:string"/>
-      <xs:element minOccurs="0" name="StopPointLongName" type="xs:string"/>
-      <xs:element minOccurs="0" name="StopPointTtsName" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" name="StopPointName" type="LanguageStringType"/>
+      <xs:element minOccurs="0" name="StopPointShortName" type="LanguageStringType"/>
+      <xs:element minOccurs="0" name="StopPointLongName" type="LanguageStringType"/>
+      <xs:element minOccurs="0" name="StopPointTtsName" type="LanguageStringType"/>
       <xs:element minOccurs="0" name="ExtraCall" type="xs:boolean"/>
       <xs:element minOccurs="0" name="CancelledCall" type="xs:boolean"/>
       <xs:element minOccurs="0" name="DivertedCall" type="xs:boolean"/>
@@ -93,10 +106,10 @@
       <xs:element minOccurs="0" name="OriginTtsName" type="xs:string"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Via" type="ViaType"/>
       <xs:element minOccurs="0" name="DestinationPlaceRef" type="xs:string"/>
-      <xs:element name="DestinationName" type="xs:string"/>
-      <xs:element minOccurs="0" name="DestinationShortName" type="xs:string"/>
-      <xs:element minOccurs="0" name="DestinationLongName" type="xs:string"/>
-      <xs:element minOccurs="0" name="DestinationTtsName" type="xs:string"/>
+      <xs:element maxOccurs="unbounded"   name="DestinationName" type="LanguageStringType"/>
+      <xs:element minOccurs="0" name="DestinationShortName" type="LanguageStringType"/>
+      <xs:element minOccurs="0" name="DestinationLongName" type="LanguageStringType"/>
+      <xs:element minOccurs="0" name="DestinationTtsName" type="LanguageStringType"/>
       <xs:element name="PatternStops" type="PatternStopsType"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="PlannedPatternNote" type="xs:string"/>
       <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>

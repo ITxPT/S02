@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 	<xs:annotation>
-		<xs:appinfo>ITxPT S02P04 FMStoIP configuration service - Get PGN operation XML Schema Definition Version 2.2.0</xs:appinfo>
+		<xs:appinfo>ITxPT S02P04 FMStoIP configuration service - pgninfo reques operation XML Schema Definition Version 2.2.0</xs:appinfo>
 		<xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
 	</xs:annotation>
 	<!-- Type definitions -->
 	<xs:simpleType name="PGNHexType">
-		<xs:restriction base="xs:token">
+	<xs:restriction base="xs:token">
 		<xs:pattern value="[0-9A-Fa-f]{4}"/>
-		</xs:restriction>
+	</xs:restriction>
 	</xs:simpleType>
-	<!-- Main element definition -->
-	<xs:element name="GetPGN">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element maxOccurs="unbounded" name="PGNId" type="PGNHexType"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
+   <!-- Main element definition -->
+	<xs:element name="PGNId" type="PGNHexType"/>
 </xs:schema>

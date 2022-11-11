@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
-    <xs:appinfo>ITxPT S02P04 FMStoIP provision service - FMStoIP operation XML Schema Definition Version 2.1.1</xs:appinfo>
+    <xs:appinfo>ITxPT S02P04 FMStoIP provision service - FMStoIP operation XML Schema Definition Version 2.2.0</xs:appinfo>
     <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
   </xs:annotation>
   <!-- Type definitions -->
   <xs:simpleType name="VersionType">
       <xs:restriction base="xs:string">
-        <xs:enumeration value="2.1.1"/>
+        <xs:enumeration value="2.2.0"/>
+      </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="FMSVersionType">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="0404"/>
       </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="StatusType">
     <xs:restriction base="xs:string">
       <xs:enumeration value="OK"/>
       <xs:enumeration value="Timeout"/>
+      <xs:enumeration value="Seen"/>
+      <xs:enumeration value="NotSeen"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="SPNidType">
@@ -26,9 +33,20 @@
       <xs:pattern value="[0-9A-Fa-f]{4}"/>
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="SAHexType">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[0-9A-Fa-f]{2}"/>
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="PGNDATAHexType">
     <xs:restriction base="xs:token">
-      <xs:pattern value="[0-9A-Fa-f]{16}"/>
+      <xs:pattern value="[0-9A-Fa-f]{16,}"/>
+      <xs:pattern value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="HexDataType">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[0-9A-Fa-f]{0,}"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="VINType">
@@ -36,19 +54,29 @@
       <xs:pattern value="[0-9A-Za-z]{17}"/>
     </xs:restriction>
   </xs:simpleType>
+  <xs:complexType name="ValidType"> 
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="valid" type="xs:boolean" use="optional">
+        </xs:attribute>
+      </xs:extension> 
+    </xs:simpleContent>
+  </xs:complexType>
   <xs:complexType name="SPNType"> 
     <xs:sequence>
       <xs:element minOccurs="0" name="Name" type="xs:string"/>
       <xs:element minOccurs="0" name="Unit" type="xs:string"/>
-      <xs:element minOccurs="0" name="Value" type="xs:string"/>
+      <xs:element name="Value" type="ValidType"/>
+      <xs:element minOccurs="0" name="RawValue" type="HexDataType"/>
     </xs:sequence>
-    <xs:attribute name="id" type="SPNidType"/>
+    <xs:attribute name="id" type="SPNidType" use="required"/>
   </xs:complexType>
   <xs:complexType name="FrameType">
     <xs:sequence>
       <xs:element name="PGN" type="PGNHexType"/>
+      <xs:element name="SA" type="SAHexType"/>
       <xs:element name="Data" type="PGNDATAHexType"/>
-      <xs:element name="RelativeTime" type="xs:positiveInteger"/>
+      <xs:element minOccurs="0" name="RelativeTime" type="xs:nonNegativeInteger"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="SPN" type="SPNType"/>
     </xs:sequence>
     <xs:attribute name="Status" type="StatusType" use="required"/>
@@ -56,14 +84,16 @@
   <xs:complexType name="FMStoIPType">
     <xs:sequence>
       <xs:element maxOccurs="unbounded" name="Frame" type="FrameType"/>
+      <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
     </xs:sequence>
-    <xs:attribute name="FMSVersion" type="xs:string" use="required"/>
+    <xs:attribute name="FMSVersion" type="FMSVersionType" use="required"/>
     <xs:attribute name="VIN" type="VINType"/>
   </xs:complexType>
   <!-- Main element definition -->
   <xs:element name="FMStoIPDelivery">
     <xs:complexType>
       <xs:sequence>
+        <xs:element name="RelativeTime" type="xs:nonNegativeInteger"/>
         <xs:element name="FMStoIP" type="FMStoIPType"/>
         <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
       </xs:sequence>

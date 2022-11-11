@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ITxPT S02P04 FMStoIP configuration service - pgninfo operation response XML Example -->
+<PGNDetails>
+  <PGNId>F004</PGNId>
+  <RepetitionRate>20</RepetitionRate>
+  <SPN id="513">
+    <Name>Actual Engine - Percent Torque</Name>
+    <Unit>%</Unit>
+    <DecodeInPGN>false</DecodeInPGN>
+  </SPN>
+  <SPN id="190">
+    <Name>Engine Speed</Name>
+    <Unit>rpm</Unit>
+    <DecodeInPGN>true</DecodeInPGN>
+  </SPN>
+</PGNDetails>

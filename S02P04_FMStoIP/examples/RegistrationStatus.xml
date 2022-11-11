@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ITxPT S02P04 FMStoIP configuration service - operation registrationstatus XML Example -->
+<RegistrationStatus>
+  <Subscriber>
+    <ClientKey>DEFAULT_MINIMUM_SET</ClientKey>
+    <RegistredPGN>
+      <PGNId>FEF1</PGNId>
+      <UpdatePolicy>EverySecond</UpdatePolicy>
+    </RegistredPGN>
+    <RegistredPGN>
+      <PGNId>F004</PGNId>
+      <UpdatePolicy>EverySecond</UpdatePolicy>
+    </RegistredPGN>
+    <RegistredPGN>
+      <PGNId>FEC1</PGNId>
+      <UpdatePolicy>EverySecond</UpdatePolicy>
+    </RegistredPGN>
+    <RegistredPGN>
+      <PGNId>FEE5</PGNId>
+      <UpdatePolicy>EverySecond</UpdatePolicy>
+    </RegistredPGN>
+    <RegistredPGN>
+      <PGNId>FE4E</PGNId>
+      <UpdatePolicy>EverySecond</UpdatePolicy>
+    </RegistredPGN>
+  </Subscriber>
+  <Subscriber>
+    <ClientKey>AcmeCo@192.168.45.1</ClientKey>
+    <RegistredPGN>
+      <PGNId>F004</PGNId>
+      <UpdatePolicy>OnChange</UpdatePolicy>
+    </RegistredPGN>
+    <RegistredPGN>
+      <PGNId>FEE5</PGNId>
+      <UpdatePolicy>EverySecond</UpdatePolicy>
+    </RegistredPGN>
+  </Subscriber>
+  <Subscriber>
+    <ClientKey>TransitLtd@192.168.45.12</ClientKey>
+    <RegistredPGN>
+      <PGNId>F004</PGNId>
+      <UpdatePolicy>EverySecond</UpdatePolicy>
+    </RegistredPGN>
+    <RegistredPGN>
+      <PGNId>FEC1</PGNId>
+      <UpdatePolicy>OnChange</UpdatePolicy>
+    </RegistredPGN>
+  </Subscriber>
+</RegistrationStatus>

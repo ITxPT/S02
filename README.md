@@ -1,9 +1,5 @@
 
-# S02 - Onboard Architecture specifications Version 2.1.1
-
-```diff
-- Note There is a new version of the specifications available
-```
+# S02 - Onboard Architecture specifications Version 2.2.0
 
 This it the github repository for the ITxPT S02 specifications. It contains example files complementing the actual specifications
 as well as JSON schemas and XSDs to use for validation purposes. 
@@ -25,13 +21,13 @@ The [Client Development Guide](guidelines/ClientDevelopmentGuide.md) lists some 
 
 Schemas and examples are currently available for each of the following services:
 
-- Inventory
-- GNSSLocation
-- FMStoIP
-- VEHICLEtoIP
-- AVMS
-- APC
-- MADT
+- Inventory (2.1.1)
+- GNSSLocation (2.2.0)
+- FMStoIP (2.2.0)
+- VEHICLEtoIP (2.1.1)
+- AVMS (2.2.0)
+- APC (2.1.1)
+- MADT (2.1.1)
 
 ### Purpose of schema files ###
 XML Schema Definitions (XSDs) or JSON schemas are the standard for describing XML and JSON structured data. Schemas should be used during software development as a tool to validate XML/JSON data structures against the ITxPT specifications. 

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
-    <xs:appinfo>ITxPT S02P04 FMStoIP configuration service - Add PGN operation XML Schema Definition Version 2.2.0</xs:appinfo>
+    <xs:appinfo>ITxPT S02P04 FMStoIP configuration service - operation registrationstatus XML Schema Definition Version 2.2.0</xs:appinfo>
     <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
   </xs:annotation>
   <!-- Type definitions -->
-  <xs:simpleType name="ClientIdString">
+  <xs:simpleType name="ClientKeyType">
     <xs:restriction base="xs:token">
-       <xs:pattern value="[A-Za-z0-9_]{0,30}"/>
+      <xs:pattern value="[A-Za-z0-9_]{0,30}@((1?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])"/>
+      <xs:pattern value="DEFAULT_MINIMUM_SET"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="PGNHexType">
@@ -27,13 +28,18 @@
       <xs:element name="UpdatePolicy" type="UpdatePolicyType"/>
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="SubscriberType">
+    <xs:sequence>
+      <xs:element name="ClientKey" type="ClientKeyType"/>
+      <xs:element maxOccurs="unbounded" name="RegistredPGN" type="PGNType"/>
+    </xs:sequence>
+  </xs:complexType>
   <!-- Main element definition -->
-  <xs:element name="AddPGN">
+  <xs:element name="RegistrationStatus">
     <xs:complexType>
       <xs:sequence>
-        <xs:element maxOccurs="unbounded" name="PGN" type="PGNType"/>
+        <xs:element maxOccurs="unbounded" name="Subscriber" type="SubscriberType"/>
       </xs:sequence>
-      <xs:attribute name="ClientId" use="optional" type="ClientIdString"/>
     </xs:complexType>
   </xs:element>
 </xs:schema>

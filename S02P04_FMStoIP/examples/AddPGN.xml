@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ITxPT S02P04 FMStoIP configuration service - Add PGN operation XML Example -->
-<AddPGN>
+<AddPGN ClientId="Client1">
   <PGN>
     <PGNId>F004</PGNId>
     <UpdatePolicy>EverySecond</UpdatePolicy>

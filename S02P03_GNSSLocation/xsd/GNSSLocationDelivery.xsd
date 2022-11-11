@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
   <xs:annotation>
-      <xs:appinfo>ITxPT S02P03 GNSSLocation service - GNSSLocation Delivery XML Schema Definition Version 2.1.1</xs:appinfo>
+      <xs:appinfo>ITxPT S02P03 GNSSLocation service - GNSSLocation Delivery XML Schema Definition Version 2.2.0</xs:appinfo>
       <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
   </xs:annotation>
   <!-- Type definitions -->
   <xs:simpleType name="VersionType">
       <xs:restriction base="xs:string">
-        <xs:enumeration value="2.1.1"/>
+        <xs:enumeration value="2.2.0"/>
       </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="DirectionLatitudeType">
@@ -81,13 +81,11 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="CH1903"/>
       <xs:enumeration value="ETSR89"/>
-      <xs:enumeration value="IERS"/>
+      <xs:enumeration value="ITRS/ITRF"/>
       <xs:enumeration value="NAD27"/>
       <xs:enumeration value="NAD83"/>
       <xs:enumeration value="WGS84"/>
-      <xs:enumeration value="WGS72"/>
-      <xs:enumeration value="SGS85"/>
-      <xs:enumeration value="P90"/>
+      <xs:enumeration value="PZ90"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="GNSSLocationType">
@@ -110,7 +108,6 @@
       <xs:element minOccurs="0" name="GNSSCoordinateSystem"  type="GNSSCoordinateSystemType"/>
     </xs:sequence>
   </xs:complexType>
-
   <!-- Main element definition -->
   <xs:element name="GNSSLocationDelivery">
     <xs:complexType>

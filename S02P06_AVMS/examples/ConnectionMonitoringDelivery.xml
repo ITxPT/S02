@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ITxPT S02P06 AVMS service - Connection Monitoring operation XML Example -->
-<ConnectionMonitoringDelivery version="2.1.1">
+<ConnectionMonitoringDelivery version="2.2.0">
   <MonitoredConnection>
     <RecordedAtTime>2019-10-24T12:12:12</RecordedAtTime>
     <ConnectionRef>s120</ConnectionRef>
@@ -25,7 +25,8 @@
     </ConnectedVehicleLineInformation>
     <ConnectedVehicleDestinationInformation>
       <DestinationRef>dest3</DestinationRef>
-      <DestinationName>terminus 1</DestinationName>
+      <DestinationName language="eng">terminus 1</DestinationName>
+      <DestinationName language="fre">terminus 1 french</DestinationName>
       <DestinationShortName>term1</DestinationShortName>
       <DestinationTTSName>BIZÃ©T</DestinationTTSName>
     </ConnectedVehicleDestinationInformation>

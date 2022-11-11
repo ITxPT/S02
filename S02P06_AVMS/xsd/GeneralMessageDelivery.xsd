@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
   <xs:annotation>
-    <xs:appinfo>ITxPT S02P06 AVMS service - General Message operation XML Schema Definition Version 2.1.1</xs:appinfo>
+    <xs:appinfo>ITxPT S02P06 AVMS service - General Message operation XML Schema Definition Version 2.2.0</xs:appinfo>
     <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
   </xs:annotation>
   <!-- Type definitions -->
   <xs:simpleType name="VersionType">
       <xs:restriction base="xs:string">
-        <xs:enumeration value="2.1.1"/>
+        <xs:enumeration value="2.2.0"/>
       </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="ISO639-3String">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[A-Za-z]{3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="LanguageStringType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+          <xs:attribute name="language" use="optional" type="ISO639-3String">
+          </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
   <xs:complexType name="LineAreaType">
     <xs:sequence>
       <xs:element name="LineRef" type="xs:string"/>
@@ -25,9 +38,9 @@
   </xs:complexType>
   <xs:complexType name="ContentType">
     <xs:sequence>
-      <xs:element minOccurs="0" name="ShortMessage" type="xs:string"/>
-      <xs:element name="Message" type="xs:string"/>
-      <xs:element minOccurs="0" name="LongMessage" type="xs:string"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ShortMessage" type="LanguageStringType"/>
+      <xs:element maxOccurs="unbounded" name="Message" type="LanguageStringType"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LongMessage" type="LanguageStringType"/>
       <xs:element minOccurs="0" name="TTSMessage" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>

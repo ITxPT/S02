@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:appinfo>ITxPT S02P04 FMStoIP configuration service - operation pgnstatus XML Schema Definition Version 2.2.0</xs:appinfo>
+    <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
+  </xs:annotation>
+  <!-- Type definitions -->
+  <xs:simpleType name="CacheStrategyType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Subscribed"/>
+      <xs:enumeration value="FMSStd"/>
+      <xs:enumeration value="All"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="StatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OK"/>
+      <xs:enumeration value="Timeout"/>
+      <xs:enumeration value="Seen"/>
+      <xs:enumeration value="NotSeen"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PGNHexType">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[0-9A-Fa-f]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SAHexType">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[0-9A-Fa-f]{2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="UpdatePolicyType">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="EverySecond"/>
+        <xs:enumeration value="OnChange"/>
+      </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="PGNStatusType">
+    <xs:sequence>
+      <xs:element name="PGNId" type="PGNHexType"/>
+      <xs:element name="SA" type="SAHexType"/>
+      <xs:element name="Status" type="StatusType"/>
+      <xs:element name="RelativeTime" type="xs:nonNegativeInteger"/>
+      <xs:element minOccurs="0"  name="UpdatePolicy" type="UpdatePolicyType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- Main element definition -->
+  <xs:element name="PGNStatusStructure">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="RelativeTime" type="xs:nonNegativeInteger"/>
+        <xs:element name="CacheStrategy" type="CacheStrategyType"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="PGNStatus" type="PGNStatusType"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

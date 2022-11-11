@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ITxPT S02P06 AVMS service - General Message operation XML Example -->
-<GeneralMessageDelivery version="2.1.1">
+<GeneralMessageDelivery version="2.2.0">
   <InfoMessage>
     <RecordedAtTime>2019-10-24T12:12:12</RecordedAtTime>
     <ItemIdentifier>a1</ItemIdentifier>
@@ -18,9 +18,12 @@
       </LineArea>
     </NetworkArea>
     <Content>
-      <ShortMessage>shrt</ShortMessage>
-      <Message>info</Message>
-      <LongMessage>info long</LongMessage>
+      <ShortMessage language="eng">shrt</ShortMessage>
+      <ShortMessage language="fre">shrt french</ShortMessage>
+      <Message language="eng">info</Message>
+      <Message language="fre">info french</Message>
+      <LongMessage language="eng">info long</LongMessage>
+      <LongMessage language="fre">info long french</LongMessage>
       <TTSMessage>DURÃ©C</TTSMessage>
     </Content>
   </InfoMessage>

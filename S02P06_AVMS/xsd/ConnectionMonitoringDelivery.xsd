@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
-    <xs:appinfo>ITxPT S02P06 AVMS service - Connection Monitoring operation XML Schema Definition Version 2.1.1</xs:appinfo>
+    <xs:appinfo>ITxPT S02P06 AVMS service - Connection Monitoring operation XML Schema Definition Version 2.2.0</xs:appinfo>
     <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
   </xs:annotation>
   <!-- Type definitions -->
   <xs:simpleType name="VersionType">
       <xs:restriction base="xs:string">
-        <xs:enumeration value="2.1.1"/>
+        <xs:enumeration value="2.2.0"/>
       </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="ISO639-3String">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[A-Za-z]{3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="LanguageStringType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+          <xs:attribute name="language" use="optional" type="ISO639-3String">
+          </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
   <xs:simpleType name="ProtectionStateType">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Protected"/>
@@ -32,9 +45,9 @@
   <xs:complexType name="ConnectedVehicleDestinationInformationType">
     <xs:sequence>
       <xs:element name="DestinationRef" type="xs:string"/>
-      <xs:element minOccurs="0" name="DestinationName" type="xs:string"/>
-      <xs:element minOccurs="0" name="DestinationShortName" type="xs:string"/>
-      <xs:element minOccurs="0" name="DestinationTTSName" type="xs:string"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DestinationName" type="LanguageStringType"/>
+      <xs:element minOccurs="0" name="DestinationShortName" type="LanguageStringType"/>
+      <xs:element minOccurs="0" name="DestinationTTSName" type="LanguageStringType"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="MonitoredConnectionType">

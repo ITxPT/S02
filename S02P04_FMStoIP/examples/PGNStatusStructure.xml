@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ITxPT S02P04 FMStoIP configuration service - operation pgnstatus XML Example -->
+<PGNStatusStructure>
+  <RelativeTime>4567890</RelativeTime>
+  <CacheStrategy>All</CacheStrategy>
+  <PGNStatus>
+    <PGNId>F004</PGNId>
+    <SA>FF</SA>
+    <Status>OK</Status>
+    <RelativeTime>4567880</RelativeTime>
+    <UpdatePolicy>EverySecond</UpdatePolicy>
+  </PGNStatus>
+  <PGNStatus>
+    <PGNId>FEE5</PGNId>
+    <SA>FF</SA>
+    <Status>OK</Status>
+    <RelativeTime>4567173</RelativeTime>
+    <UpdatePolicy>EverySecond</UpdatePolicy>
+  </PGNStatus>
+  <PGNStatus>
+    <PGNId>FEEC</PGNId>
+    <SA>FF</SA>
+    <Status>OK</Status>
+    <RelativeTime>4564567</RelativeTime>
+    <UpdatePolicy>EverySecond</UpdatePolicy>
+  </PGNStatus>
+</PGNStatusStructure>

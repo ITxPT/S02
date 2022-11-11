@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:appinfo>ITxPT S02P04 FMStoIP configuration service - pgninfo operation response XML Schema Definition Version 2.2.0</xs:appinfo>
+    <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
+  </xs:annotation>
+  <!-- Type definitions -->
+  <xs:simpleType name="SPNidType">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:maxInclusive value="9999"/>     
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PGNHexType">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[0-9A-Fa-f]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="SPNType"> 
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string"/>
+      <xs:element name="Unit" type="xs:string"/>
+      <xs:element name="DecodeInPGN" type="xs:boolean"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="SPNidType" use="required"/>
+  </xs:complexType>
+  <!-- Main element definition -->
+  <xs:element name="PGNDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="PGNId" type="PGNHexType"/>
+        <xs:element minOccurs="0" name="RepetitionRate" type="xs:positiveInteger"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="SPN" type="SPNType"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

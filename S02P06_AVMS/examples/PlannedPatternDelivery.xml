@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ITxPT S02P06 AVMS service - Planned Pattern operation XML Example -->
-<PlannedPatternDelivery version="2.1.1">
+<PlannedPatternDelivery version="2.2.0">
   <PlannedPattern>
     <RecordedAtTime>2019-10-24T12:12:12</RecordedAtTime>
     <PatternRef>9308</PatternRef>
@@ -18,7 +18,8 @@
     <OriginTtsName>BIZÃ©T</OriginTtsName>
     <Via>
       <PlaceRef>11525</PlaceRef>
-      <PlaceName>Eglise St-Jean</PlaceName>
+      <PlaceName language="fre">Eglise St-Jean</PlaceName>
+      <PlaceName language="eng">St-Jean church</PlaceName>
     </Via>
     <DestinationPlaceRef>12180</DestinationPlaceRef>
     <DestinationName>Durecu-Lavoisier</DestinationName>
@@ -37,7 +38,8 @@
       <PatternStop>
         <StopPointRef>11524</StopPointRef>
         <Order>2</Order>
-        <StopPointName>Eglise St-Jean</StopPointName>
+        <StopPointName language="fre">Eglise St-Jean</StopPointName>
+        <StopPointName language="eng">St-Jean church</StopPointName>
         <StopPointShortName>Eglise St-Jean</StopPointShortName>
         <StopPointLongName>Eglise St-Jean</StopPointLongName>
         <StopPointTtsName>EGLISE SAINT-JEAN</StopPointTtsName>
