@@ -13,19 +13,23 @@
       </SPN>
       <SPN id="595">
         <Name>Cruise control active</Name>
+        <Unit></Unit>
         <Value>switched off</Value>
       </SPN>
       <SPN id="597">
         <Name>Brake Switch</Name>
+        <Unit></Unit>
         <Value>pedal released</Value>
       </SPN>
       <SPN id="598">
         <Name>Clutch Switch</Name>
-        <Unit>pedal released</Unit>
+        <Unit></Unit>
+        <Value>pedal released</Value>
       </SPN>
       <SPN id="976">
         <Name>PTO state</Name>
         <Unit>not available</Unit>
+        <Value></Value>
       </SPN>
     </Frame>
     <Frame Status="OK">

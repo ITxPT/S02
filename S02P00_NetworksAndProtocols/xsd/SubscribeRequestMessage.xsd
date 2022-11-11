@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:annotation>
+      <xs:appinfo>ITxPT S02P00 itxpt_http service subscription - Subscribe request XML Schema Definition Version 2.1.1</xs:appinfo>
+      <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
+  </xs:annotation>
+  <!-- Type definitions -->
+  <xs:simpleType name="IPv4Type">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="((1?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- Main element definition -->
+  <xs:element name="SubscribeRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Client-IP-Address" type="IPv4Type"/>
+        <xs:element name="ReplyPort" type="xs:nonNegativeInteger"/>
+        <xs:element name="ReplyPath" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

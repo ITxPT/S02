@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ITxPT S02P00 Networks and Protocols - Subscribe request XML Example -->
+<SubscribeRequest>
+    <Client-IP-Address>192.168.127.10</Client-IP-Address>
+    <ReplyPort>15320</ReplyPort>
+    <ReplyPath>/ReplyPath/Message1</ReplyPath>
+</SubscribeRequest>

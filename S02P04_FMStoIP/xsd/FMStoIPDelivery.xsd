@@ -38,11 +38,11 @@
   </xs:simpleType>
   <xs:complexType name="SPNType"> 
     <xs:sequence>
-      <xs:element minOccurs="0" name="Name" type="xs:string"/>
-      <xs:element minOccurs="0" name="Unit" type="xs:string"/>
-      <xs:element minOccurs="0" name="Value" type="xs:string"/>
+      <xs:element name="Name" type="xs:string"/>
+      <xs:element name="Unit" type="xs:string"/>
+      <xs:element name="Value" type="xs:string"/>
     </xs:sequence>
-    <xs:attribute name="id" type="SPNidType"/>
+    <xs:attribute name="id" type="SPNidType" use="required"/>
   </xs:complexType>
   <xs:complexType name="FrameType">
     <xs:sequence>
