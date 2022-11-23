@@ -76,7 +76,7 @@
       <xs:element name="PGN" type="PGNHexType"/>
       <xs:element name="SA" type="SAHexType"/>
       <xs:element name="Data" type="PGNDATAHexType"/>
-      <xs:element minOccurs="0" name="RelativeTime" type="xs:nonNegativeInteger"/>
+      <xs:element name="RelativeTime" type="xs:nonNegativeInteger"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="SPN" type="SPNType"/>
     </xs:sequence>
     <xs:attribute name="Status" type="StatusType" use="required"/>

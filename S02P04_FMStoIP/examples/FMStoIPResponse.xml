@@ -2,11 +2,11 @@
 <!-- ITxPT S02P04 FMStoIP configuration service - standard response header XML Example -->
 <FMStoIPResponse>
     <Result>
-        <ID>F004</ID>
+        <Id>F004</Id>
         <FMSResponseCode>SUCCESS</FMSResponseCode>
     </Result>
     <Result>
-        <ID>FFFFF</ID>
+        <Id>FFFFF</Id>
         <FMSResponseCode>FAILURE_REQUEST</FMSResponseCode>
         <ResponseMessage>Not a valid PGN ID</ResponseMessage>
     </Result>

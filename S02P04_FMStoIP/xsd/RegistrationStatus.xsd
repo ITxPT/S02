@@ -31,7 +31,7 @@
   <xs:complexType name="SubscriberType">
     <xs:sequence>
       <xs:element name="ClientKey" type="ClientKeyType"/>
-      <xs:element maxOccurs="unbounded" name="RegistredPGN" type="PGNType"/>
+      <xs:element maxOccurs="unbounded" name="RegisteredPGN" type="PGNType"/>
     </xs:sequence>
   </xs:complexType>
   <!-- Main element definition -->

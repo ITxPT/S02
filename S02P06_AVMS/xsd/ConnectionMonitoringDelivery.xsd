@@ -35,10 +35,10 @@
   <xs:complexType name="ConnectedVehicleLineInformationType">
     <xs:sequence>
       <xs:element name="LineRef" type="xs:string"/>
-      <xs:element minOccurs="0" name="LineName" type="xs:string"/>
-      <xs:element minOccurs="0" name="LineShortName" type="xs:string"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LineName" type="LanguageStringType"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LineShortName" type="LanguageStringType"/>
       <xs:element minOccurs="0" name="LineNumber" type="xs:positiveInteger"/>
-      <xs:element minOccurs="0" name="LineTTSName" type="xs:string"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LineTTSName" type="LanguageStringType"/>
       <xs:element minOccurs="0" name="Direction" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
@@ -46,8 +46,8 @@
     <xs:sequence>
       <xs:element name="DestinationRef" type="xs:string"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DestinationName" type="LanguageStringType"/>
-      <xs:element minOccurs="0" name="DestinationShortName" type="LanguageStringType"/>
-      <xs:element minOccurs="0" name="DestinationTTSName" type="LanguageStringType"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DestinationShortName" type="LanguageStringType"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DestinationTTSName" type="LanguageStringType"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="MonitoredConnectionType">

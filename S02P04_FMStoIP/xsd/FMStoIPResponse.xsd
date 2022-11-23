@@ -17,7 +17,7 @@
   </xs:simpleType>  
   <xs:complexType name="ResultType">
     <xs:sequence>
-      <xs:element name="ID" type="xs:string"/>
+      <xs:element name="Id" type="xs:string"/>
       <xs:element name="FMSResponseCode" type="ResponseCodeType"/>
       <xs:element minOccurs="0" name="ResponseMessage" type="xs:string"/>
     </xs:sequence>

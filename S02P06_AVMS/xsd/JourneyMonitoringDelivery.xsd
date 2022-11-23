@@ -37,7 +37,7 @@
   </xs:complexType>
   <xs:complexType name="PreviousCallsType">
     <xs:sequence>
-      <xs:element name="PreviousCall" type="PreviousCallType"/>
+      <xs:element maxOccurs="unbounded" name="PreviousCall" type="PreviousCallType"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="OnwardCallType">
@@ -109,7 +109,7 @@
   <xs:element name="JourneyMonitoringDelivery">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="MonitoredJourney" type="MonitoredJourneyType"/>
+        <xs:element minOccurs="0" name="MonitoredJourney" type="MonitoredJourneyType"/>
         <xs:element minOccurs="0" name="MonitoredJourneyCancellation" type="MonitoredJourneyCancellationType"/>
         <xs:element minOccurs="0" name="Extension" type="xs:anyType"/>
       </xs:sequence>
