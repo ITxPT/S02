@@ -100,7 +100,7 @@
       <xs:element name="DirectionRef" type="xs:string"/>
       <xs:element name="ExternalLineRef" type="xs:string"/>
       <xs:element minOccurs="0" name="OriginPlaceRef" type="xs:string"/>
-      <xs:element name="OriginName" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" name="OriginName" type="LanguageStringType"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="OriginShortName" type="LanguageStringType"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="OriginLongName" type="LanguageStringType"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="OriginTtsName" type="LanguageStringType"/>
