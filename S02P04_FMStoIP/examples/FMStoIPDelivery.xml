@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ITxPT S02P04 FMStoIP provision service - FMStoIP operation XML Example -->
-<FMStoIPDelivery version="2.2.0">
+<FMStoIPDelivery version="2.2.1">
   <RelativeTime>5000</RelativeTime>
   <FMStoIP FMSVersion="0404" VIN="VINITXPTSPECV2100">
     <Frame Status="OK">

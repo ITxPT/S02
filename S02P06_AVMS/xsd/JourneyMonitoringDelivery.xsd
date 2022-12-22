@@ -7,7 +7,7 @@
   <!-- Type definitions -->
   <xs:simpleType name="VersionType">
       <xs:restriction base="xs:string">
-        <xs:enumeration value="2.2.0"/>
+        <xs:enumeration value="2.2.1"/>
       </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="ProgressRateType">
@@ -93,7 +93,7 @@
       <xs:element minOccurs="0" name="PreviousCalls" type="PreviousCallsType"/>
       <xs:element name="MonitoredCall" type="MonitoredCallType"/>
       <xs:element minOccurs="0" name="OnwardCalls" type="OnwardCallsType"/>
-      <xs:element minOccurs="0" name="Extension" type="xs:anyType"/>
+      <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="MonitoredJourneyCancellationType">
@@ -111,7 +111,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="MonitoredJourney" type="MonitoredJourneyType"/>
         <xs:element minOccurs="0" name="MonitoredJourneyCancellation" type="MonitoredJourneyCancellationType"/>
-        <xs:element minOccurs="0" name="Extension" type="xs:anyType"/>
+        <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
       </xs:sequence>
       <xs:attribute name="version" use="required" type="VersionType"/>
     </xs:complexType>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ITxPT S02P06 AVMS service - Run Monitoring operation XML Example -->
-<RunMonitoringDelivery version="2.2.0">
+<RunMonitoringDelivery version="2.2.1">
   <MonitoredRunState>
     <RecordedAtTime>2019-10-24T12:12:12</RecordedAtTime>
     <MonitoredBlockRef>9301</MonitoredBlockRef>

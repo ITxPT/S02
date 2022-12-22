@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ITxPT S02P06 AVMS service - Planned Pattern operation XML Example -->
-<PlannedPatternDelivery version="2.2.0">
+<PlannedPatternDelivery version="2.2.1">
   <PlannedPattern>
     <RecordedAtTime>2019-10-24T12:12:12</RecordedAtTime>
     <PatternRef>9308</PatternRef>

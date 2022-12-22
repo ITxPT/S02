@@ -37,3 +37,11 @@ To report any issue found during implementation or question you have regarding t
 
 ## Report an issue/question related to an ITxPT specification ###
 To report any issue found during implementation or question you have regarding the content of the specification, please use the dedicated form: https://forms.gle/tMRgxTXSF1Mahpq27
+
+## Revision History ###
+- Rev. D - Reported issues fixed, revision history added;
+           PatternMonitoringDelivery.xsd fixed, version for AVMS and FMStoIP examples,xsds set to 2.2.1;
+           JourneyMonitoringDelivery: "Extension" corrected to "Extensions"
+- Rev. C - Updated files for AVMS 2.2.1 and FMStoIP 2.2.1
+- Rev. B - S02P00 subscribe, unsubscribe files added
+- Rev. A - Initial revision Sequoia release

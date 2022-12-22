@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ITxPT S02P06 AVMS service - Vehicle Monitoring operation XML Example -->
-<VehicleMonitoringDelivery version="2.2.0">
+<VehicleMonitoringDelivery version="2.2.1">
   <VehicleActivity>
     <RecordedAtTime>2019-10-24T12:12:12</RecordedAtTime>
     <ItemIdentifier>9</ItemIdentifier>

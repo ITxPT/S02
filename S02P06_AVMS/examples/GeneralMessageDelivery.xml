@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ITxPT S02P06 AVMS service - General Message operation XML Example -->
-<GeneralMessageDelivery version="2.2.0">
+<GeneralMessageDelivery version="2.2.1">
   <InfoMessage>
     <RecordedAtTime>2019-10-24T12:12:12</RecordedAtTime>
     <ItemIdentifier>a1</ItemIdentifier>

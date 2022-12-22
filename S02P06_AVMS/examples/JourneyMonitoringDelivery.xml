@@ -1,4 +1,4 @@
-<JourneyMonitoringDelivery version="2.2.0">
+<JourneyMonitoringDelivery version="2.2.1">
   <!-- ITxPT S02P06 AVMS service - Journey Monitoring operation XML Example -->
   <MonitoredJourney>
     <RecordedAtTime>2019-10-24T12:12:12</RecordedAtTime>

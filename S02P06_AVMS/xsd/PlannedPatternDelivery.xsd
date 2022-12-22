@@ -7,7 +7,7 @@
   <!-- Type definitions -->
   <xs:simpleType name="VersionType">
       <xs:restriction base="xs:string">
-        <xs:enumeration value="2.2.0"/>
+        <xs:enumeration value="2.2.1"/>
       </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="ISO639-3String">
