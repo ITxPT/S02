@@ -41,3 +41,8 @@ To report any issue found during implementation or question you have regarding t
 
 ## Report an issue/question related to an ITxPT specification ###
 To report any issue found during implementation or question you have regarding the content of the specification, please use the dedicated form: https://forms.gle/tMRgxTXSF1Mahpq27
+
+## Revision History 2.1.1 ###
+- Rev. C - PatternMonitoringDelivery - broken closing tag fixed in XSD
+- Rev. B - S02P00 subscribe, unsubscribe files added
+- Rev. A - Initial revision 2.1.1 release

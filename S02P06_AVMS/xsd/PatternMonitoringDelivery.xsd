@@ -36,7 +36,7 @@
       <xs:element name="ItemIdentifier" type="xs:string"/>
       <xs:element name="PatternRef" type="xs:string"/>
       <xs:element name="MonitoredCallRef" type="MonitoredCallRefType"/>
-      <xs:element name="OnwardCalls" type="OnwardCallsType">/>
+      <xs:element name="OnwardCalls" type="OnwardCallsType"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="MonitoredPatternNote" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
