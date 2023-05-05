@@ -43,6 +43,8 @@ To report any issue found during implementation or question you have regarding t
 To report any issue found during implementation or question you have regarding the content of the specification, please use the dedicated form: https://forms.gle/tMRgxTXSF1Mahpq27
 
 ## Revision History 2.1.1 ###
+- Rev. D - FMStoIP - XSD updated - flexible VIN (string max. 17 characters),
+           XML inventory example updated
 - Rev. C - PatternMonitoringDelivery - broken closing tag fixed in XSD
 - Rev. B - S02P00 subscribe, unsubscribe files added
 - Rev. A - Initial revision 2.1.1 release
