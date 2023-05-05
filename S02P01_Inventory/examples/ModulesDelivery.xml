@@ -56,6 +56,14 @@
       <ServiceName>gnsslocation</ServiceName>
       <ServiceType>itxpt_multicast</ServiceType>
     </Services>
+    <Services>
+      <ServiceName>fmstoip</ServiceName>
+      <ServiceType>itxpt_multicast</ServiceType>
+    </Services>
+    <Services>
+      <ServiceName>fmstoip</ServiceName>
+      <ServiceType>itxpt_http</ServiceType>
+    </Services>
   </Module>
   <Extensions/>
 </ModulesDelivery>

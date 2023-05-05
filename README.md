@@ -39,6 +39,7 @@ To report any issue found during implementation or question you have regarding t
 To report any issue found during implementation or question you have regarding the content of the specification, please use the dedicated form: https://forms.gle/tMRgxTXSF1Mahpq27
 
 ## Revision History ###
+- Rev. E - FMStoIP - XSD updated - flexible VIN (string max. 17 characters), XML inventory example updated
 - Rev. D - Reported issues fixed, revision history added;
            PatternMonitoringDelivery.xsd fixed, version for AVMS and FMStoIP examples,xsds set to 2.2.1;
            JourneyMonitoringDelivery: "Extension" corrected to "Extensions"

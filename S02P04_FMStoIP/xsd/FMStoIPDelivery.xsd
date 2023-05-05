@@ -49,11 +49,11 @@
       <xs:pattern value="[0-9A-Fa-f]{0,}"/>
     </xs:restriction>
   </xs:simpleType>
-  <xs:simpleType name="VINType">
-    <xs:restriction base="xs:token">
-      <xs:pattern value="[0-9A-Za-z]{17}"/>
+  <xs:simpleType name="VINFlexType">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="17" />
     </xs:restriction>
-  </xs:simpleType>
+  </xs:simpleType>  
   <xs:complexType name="ValidType"> 
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -87,7 +87,7 @@
       <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
     </xs:sequence>
     <xs:attribute name="FMSVersion" type="FMSVersionType" use="required"/>
-    <xs:attribute name="VIN" type="VINType"/>
+    <xs:attribute name="VIN" type="VINFlexType"/>
   </xs:complexType>
   <!-- Main element definition -->
   <xs:element name="FMStoIPDelivery">
