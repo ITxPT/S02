@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ITxPT S02P05 VEHICLEtoIP service - VEHICLEtoIP Delivery XML Example -->
-<VEHICLEtoIPDelivery version="2.1.1">
+<VEHICLEtoIPDelivery version="2.1.2">
   <VEHICLEtoIP>
     <RecordedAtTime>2019-10-24T12:12:12</RecordedAtTime>
     <Odospeed>123.45</Odospeed>

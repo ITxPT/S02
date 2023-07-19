@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
   <xs:annotation>
-      <xs:appinfo>ITxPT S02P03 GNSSLocation service - GNSSLocation Delivery XML Schema Definition Version 2.2.0</xs:appinfo>
+      <xs:appinfo>ITxPT S02P03 GNSSLocation service - GNSSLocation Delivery XML Schema Definition Version 2.2.1</xs:appinfo>
       <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
   </xs:annotation>
   <!-- Type definitions -->
   <xs:simpleType name="VersionType">
       <xs:restriction base="xs:string">
         <xs:enumeration value="2.2.0"/>
+        <xs:enumeration value="2.2.1"/>
       </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="DirectionLatitudeType">
@@ -99,7 +100,7 @@
       <xs:element minOccurs="0" name="SpeedOverGround" type="xs:double"/>
       <xs:element minOccurs="0" name="SignalQuality" type="SignalQualityType"/>
       <xs:element minOccurs="0" name="Fix" type="FixType"/>
-      <xs:element minOccurs="0" name="NumberOfSatellites" type="xs:positiveInteger"/>
+      <xs:element minOccurs="0" name="NumberOfSatellites" type="xs:nonNegativeInteger"/>
       <xs:element minOccurs="0" name="HorizontalDilutionOfPrecision" type="xs:double"/>
       <xs:element minOccurs="0" name="VerticalDilutionOfPrecision" type="xs:double"/>
       <xs:element minOccurs="0" name="TrackDegreeTrue" type="xs:double"/>

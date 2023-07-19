@@ -21,10 +21,10 @@ The [Client Development Guide](guidelines/ClientDevelopmentGuide.md) lists some 
 
 Schemas and examples are currently available for each of the following services:
 
-- Inventory (2.1.1)
-- GNSSLocation (2.2.0)
+- Inventory (2.1.2)
+- GNSSLocation (2.2.1)
 - FMStoIP (2.2.1)
-- VEHICLEtoIP (2.1.1)
+- VEHICLEtoIP (2.1.2)
 - AVMS (2.2.1)
 - APC (2.1.1)
 - MADT (2.1.1)
@@ -39,6 +39,8 @@ To report any issue found during implementation or question you have regarding t
 To report any issue found during implementation or question you have regarding the content of the specification, please use the dedicated form: https://forms.gle/tMRgxTXSF1Mahpq27
 
 ## Revision History ###
+- Rev. F - Inventory,GNSSLocation, VEHICLEtoIP updated to new patch version, add. valid versions added to schemas, examples updated,
+           multiple version per schema
 - Rev. E - FMStoIP - XSD updated - flexible VIN (string max. 17 characters), XML inventory example updated
 - Rev. D - Reported issues fixed, revision history added;
            PatternMonitoringDelivery.xsd fixed, version for AVMS and FMStoIP examples,xsds set to 2.2.1;

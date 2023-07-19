@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ITxPT S02P01 Inventory service - Modules Delivery XML Example -->
-<ModulesDelivery version="2.1.1">
+<ModulesDelivery version="2.1.2">
   <Module>
     <Type>Communication Gateway</Type>
     <Model>Model26</Model>
