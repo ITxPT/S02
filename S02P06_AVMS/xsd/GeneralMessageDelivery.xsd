@@ -60,7 +60,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element maxOccurs="unbounded" name="InfoMessage" type="InfoMessageType"/>
-        <xs:element maxOccurs="unbounded" name="InfoMessageCancellation" type="InfoMessageCancellationType"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="InfoMessageCancellation" type="InfoMessageCancellationType"/>
         <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
       </xs:sequence>
       <xs:attribute name="version" use="required" type="VersionType"/>
