@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema version="1.0.0" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema version="1.0" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:appinfo>ITxPT S02P04 FMStoIP configuration service - pgninfo operation response XML Schema Definition Version 2.2.1</xs:appinfo>
     <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
