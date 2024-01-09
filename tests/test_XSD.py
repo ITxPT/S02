@@ -84,10 +84,10 @@ def test_xsd_versions(db):
     result = xsd_check()
 
     # Define expected result
-    expected_result = "Hello World!"
+    expected_result = []
 
     # Insert test result into the database
     insert_test_result(db, table_name, test_info, sut_info, result, expected_result)
 
     # Assert result
-    raise AssertionError("\n".join(result))
+    assert result == expected_result, "\n".join(result)
