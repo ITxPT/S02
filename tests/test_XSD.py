@@ -46,16 +46,16 @@ def xsd_check():
                 
                 commits = list(repo.iter_commits(paths=file_path, max_count=2))
                 latest_commit = commits[0]
-                latest_version = get_schema_versions_from_string(repo.git.show(f"{latest_commit.hexsha}:{file_path}"))
+                latest_version = get_schema_versions_from_string(repo.git.show(f"{latest_commit.hexsha}:{file_path}")) # Get the latest version
 
-                if latest_version is None:
+                if latest_version is None: # If the latest version is None, then the file does not have a version
                     errors.append(f"{file_path}: File [{file}] does not have a version")
                     continue
 
                 if len(commits) > 1:
                     second_latest_commit = commits[1]
-                    previous_version = get_schema_versions_from_string(repo.git.show(f"{second_latest_commit.hexsha}:{file_path}"))
-                    if latest_version == previous_version:
+                    previous_version = get_schema_versions_from_string(repo.git.show(f"{second_latest_commit.hexsha}:{file_path}")) # Get the previous version
+                    if latest_version == previous_version: # If the latest version is the same as the previous version, then the version has not changed
                         errors.append(f"{file_path}: Schema version for file [{file}] has not changed!")
 
     # Clean up: Delete the temporary repository
