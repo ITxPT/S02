@@ -17,25 +17,16 @@ jobs:
           python-version: '3.x'  # Use the latest Python 3.x version
 
       - name: Install dependencies
-        run: |
-          python -m pip install pytest
-          python -m pip install mysql-connector-python
-          python -m pip install python-dotenv
-          python -m pip install pytest gitpython
+        run: pip install -r tests/requirements.txt
 
-      #- name: Run tests
-      #  run: |
-      #    pytest --version
-      #    pytest
-
-      - name: Run a multi-line script
+      - name: Run tests
         env:
-          DB_HOST: ${{ secrets.DB_HOST }}
-          DB_USERNAME: ${{ secrets.DB_USERNAME }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          DB_DATABASE: ${{ secrets.DB_DATABASE }}
+          BI_USERNAME: ${{ secrets.BI_USERNAME }}
+          BI_PASSWORD: ${{ secrets.BI_PASSWORD }}
+          BI_APP_ID: ${{ secrets.BI_APP_ID }}
+          BI_APP_DIRECTORY_TENANT_ID: ${{ secrets.BI_APP_DIRECTORY_TENANT_ID }}
+          BI_XSD_DATASET_ID: ${{ secrets.BI_XSD_DATASET_ID }}
         run: |
-          ls -a
           python3 --version
           pytest --version
           pytest
