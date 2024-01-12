@@ -7,20 +7,19 @@ import pytest
 from lib.power_bi import push_results_to_power_bi
 import os
 from dotenv import load_dotenv
+import glob
+from lxml import etree
 
 load_dotenv()
 
-BI_DATASET_ID = os.getenv("BI_XSD_DATASET_ID")
+BI_DATASET_ID = os.getenv("BI_DATASET_ID")
 
-def insert_test_result(actual_result, expected_result):
-    verdict = "PASS" if actual_result == expected_result else "FAIL"
+def insert_test_result(test_name: str, actual_result, expected_result, BI_DATASET_ID: str):
+    # Check if the actual result matches the expected result
+    verdict = 1 if actual_result == expected_result else 0
+
     # Push test result to Power BI
-    if verdict == "PASS":
-        push_results_to_power_bi(1, BI_DATASET_ID)
-    else:
-        push_results_to_power_bi(0, BI_DATASET_ID)
-    
-
+    push_results_to_power_bi(test_name, verdict, BI_DATASET_ID)
 
 def get_schema_versions_from_string(file_content):
     # Parse the XML content using an in-memory file
@@ -76,15 +75,78 @@ def xsd_check():
 
     return errors
 
+def validate_xml_examples():
+    # List to store error messages
+    errors = []
+
+    # Get the directory of the current script
+    current_dir = os.path.dirname(os.path.realpath(__file__))
+    parent_dir = os.path.dirname(current_dir)
+
+    # Iterate over each sibling directory
+    for sibling_dir in os.listdir(parent_dir):
+        # Skip the current directory
+        if sibling_dir == os.path.basename(current_dir):
+            continue
+
+        # Define the directories where your XSDs and XMLs are stored
+        xsd_dir = os.path.join(parent_dir, sibling_dir, "xsd")
+        xml_dir = os.path.join(parent_dir, sibling_dir, "examples")
+
+        # Skip this sibling directory if it doesn't contain XSDs and XMLs
+        if not os.path.exists(xsd_dir) or not os.path.exists(xml_dir):
+            continue
+
+        # Get all XSD and XML files
+        xsd_files = glob.glob(f"{xsd_dir}/*.xsd")
+        xml_files = glob.glob(f"{xml_dir}/*.xml")
+
+        # Check if there are any XSD files without a corresponding XML
+        for xsd_file in xsd_files:
+            xml_file = os.path.join(xml_dir, os.path.basename(xsd_file).replace('.xsd', '.xml'))
+            if not os.path.exists(xml_file):
+                errors.append(f"XSD file {xsd_file} does not have a corresponding XML")
+
+        # Check if there are any XML files without a corresponding XSD
+        for xml_file in xml_files:
+            xsd_file = os.path.join(xsd_dir, os.path.basename(xml_file).replace('.xml', '.xsd'))
+            if not os.path.exists(xsd_file):
+                errors.append(f"XML file {xml_file} does not have a corresponding XSD")
+
+        # Iterate over each XML file
+        for xml_file in glob.glob(f"{xml_dir}/*.xml"):
+            # Derive the name of the corresponding XSD
+            xsd_file = os.path.join(xsd_dir, os.path.basename(xml_file).replace('.xml', '.xsd'))
+
+            # Skip this XML file if its XSD doesn't exist
+            if not os.path.exists(xsd_file):
+                continue
+
+            # Parse the XSD
+            xmlschema_doc = etree.parse(xsd_file)
+            xmlschema = etree.XMLSchema(xmlschema_doc)
+
+            # Parse the XML
+            doc = etree.parse(xml_file)
+
+            # Validate the XML against the XSD
+            #assert xmlschema.validate(doc), f"{xml_file} does not conform to its XSD"
+            if not xmlschema.validate(doc):
+                errors.append(f"{xml_file} does not conform to its XSD")
+                
+    return errors
+
 def test_xsd_versions():
     # Execute the system under test (SUT)
-    result = xsd_check()
+    result = []
+    result += xsd_check()
+    result += validate_xml_examples()
 
     # Define expected result
     expected_result = []
 
     # Insert test result into the database
-    insert_test_result(result, expected_result)
+    insert_test_result("S02", result, expected_result, BI_DATASET_ID)
 
     # Assert result
     assert result == expected_result, "\n".join(result)

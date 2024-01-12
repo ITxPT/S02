@@ -45,7 +45,7 @@ def request_access_token(): # Generate Power BI Access Token
     return access_id
     """
 
-def push_results_to_power_bi(verdict: int, BI_DATASET_ID: str):
+def push_results_to_power_bi(system_under_test: str, verdict: int, BI_DATASET_ID: str):
     if not isinstance(verdict, int):
         raise TypeError("verdict must be an integer")
     access_id = request_access_token()
@@ -60,7 +60,7 @@ def push_results_to_power_bi(verdict: int, BI_DATASET_ID: str):
     data = {
       "rows": [
         {
-          "Verdict": verdict
+          system_under_test: verdict
         }
       ]
     }
