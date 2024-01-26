@@ -36,7 +36,7 @@ XML Schema Definitions (XSDs) or JSON schemas are the standard for describing XM
 To report any issue found during implementation or question you have regarding the content of this repository, please use GitHub's Issue system. 
 
 ## Report an issue/question related to an ITxPT specification ###
-To report any issue found during implementation or question you have regarding the content of the specification, please use the dedicated form: https://forms.gle/tMRgxTXSF1Mahpq27
+To report any issue found during implementation or question you have regarding the content of the specification, please use the dedicated platform: https://ticket.itxpt.eu/
 
 ## Revision History ###
 - Rev. F - Inventory,GNSSLocation, VEHICLEtoIP updated to new patch version, add. valid versions added to schemas, examples updated,
