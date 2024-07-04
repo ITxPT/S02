@@ -9,6 +9,7 @@
       <xs:restriction base="xs:string">
         <xs:enumeration value="2.1.1"/>
         <xs:enumeration value="2.1.2"/>
+        <xs:enumeration value="2.1.3"/>
       </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="MACAddressType">
@@ -40,6 +41,7 @@
       <xs:element name="HardwareVersion" type="xs:string"/>
       <xs:element name="Status" type="xs:string"/>
       <xs:element minOccurs="0" name="XStatus" type="XStatusType"/>
+      <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
     </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="ServiceNameType">
