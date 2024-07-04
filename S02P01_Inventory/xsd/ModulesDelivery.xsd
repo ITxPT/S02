@@ -40,7 +40,7 @@
       <xs:element name="SoftwareVersion" type="xs:string"/>
       <xs:element name="HardwareVersion" type="xs:string"/>
       <xs:element name="Status" type="xs:string"/>
-      <xs:element minOccurs="0" name="XStatus" type="XStatusType"/>
+      <xs:element minOccurs="0" maxOccurs="16" name="XStatus" type="XStatusType"/>
       <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
     </xs:sequence>
   </xs:complexType>
@@ -90,8 +90,8 @@
       <xs:element name="MACAddress" type="MACAddressType"/>
       <xs:element minOccurs="0" name="EcoMode" type="xs:string"/>
       <xs:element name="Status" type="xs:string"/>
-      <xs:element minOccurs="0" name="XStatus" type="XStatusType"/>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="StatusList" type="StatusListType"/>
+      <xs:element minOccurs="0" maxOccurs="16" name="XStatus" type="XStatusType"/>
+      <xs:element minOccurs="0" maxOccurs="16" name="StatusList" type="StatusListType"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="SubModules" type="SubModulesType"/>
       <xs:element minOccurs="1" maxOccurs="unbounded" name="Services" type="ServicesType"/>
       <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
