@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema version="1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+<xs:schema version="1.2"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
   <xs:annotation>
-      <xs:appinfo>ITxPT S02P01 Module Inventory service - Modules Delivery XML Schema Definition Version 2.1.3</xs:appinfo>
+      <xs:appinfo>ITxPT S02P01 Module Inventory service - Modules Delivery XML Schema Definition Version 2.1.4</xs:appinfo>
       <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
   </xs:annotation>
   <!-- Type definitions -->
@@ -10,6 +12,7 @@
         <xs:enumeration value="2.1.1"/>
         <xs:enumeration value="2.1.2"/>
         <xs:enumeration value="2.1.3"/>
+        <xs:enumeration value="2.1.4"/>
       </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="MACAddressType">
@@ -17,20 +20,39 @@
     <xs:pattern value="[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}"/>
   </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="EcoModeType">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="ECO0"/>
+        <xs:enumeration value="ECO1"/>
+        <xs:enumeration value="ECO2"/>
+        <xs:enumeration value="SLEEP"/>
+      </xs:restriction>
+  </xs:simpleType>
   <xs:complexType name="StatusListType">
     <xs:sequence>
-      <xs:element maxOccurs="unbounded" name="Item" type="ItemType"/>
+      <xs:element minOccurs="1" maxOccurs="30" name="Item" type="ItemType"/>
     </xs:sequence>
-    <xs:attribute name="page" type="xs:positiveInteger" use="required" />
+    <xs:attribute name="page" type="pageType" use="required" />
   </xs:complexType>
   <xs:complexType name="XStatusType">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="page" type="xs:positiveInteger" use="required" />
+    <xs:simpleContent>      
+      <xs:extension base="XStatusFormatType">
+        <xs:attribute name="page" type="pageType" use="required" />
         <xs:attribute name="timestamp" type="xs:dateTime" use="required" />
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
+  <xs:simpleType name="XStatusFormatType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9a-fA-F]{16}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="pageType">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="16"/>
+    </xs:restriction>  
+  </xs:simpleType>
   <xs:complexType name="SubModulesType">
     <xs:sequence>
       <xs:element name="Type" type="xs:string"/>
@@ -39,7 +61,7 @@
       <xs:element name="SerialNumber" type="xs:string"/>
       <xs:element name="SoftwareVersion" type="xs:string"/>
       <xs:element name="HardwareVersion" type="xs:string"/>
-      <xs:element name="Status" type="xs:string"/>
+      <xs:element name="Status" type="xs:nonNegativeInteger"/>
       <xs:element minOccurs="0" maxOccurs="16" name="XStatus" type="XStatusType"/>
       <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
     </xs:sequence>
@@ -75,21 +97,47 @@
   <xs:complexType name="ItemType">
     <xs:simpleContent>
       <xs:extension base="xs:string">
-        <xs:attribute name="code" type="xs:positiveInteger"/>
+        <xs:attribute name="code" type="itemCodeType"/>          
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
+  <xs:simpleType name="itemCodeType">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="30"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ModuleTypeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="VCG"/>
+      <xs:enumeration value="ESW"/>
+      <xs:enumeration value="MESW"/>
+      <xs:enumeration value="FMSIPGW"/>
+      <xs:enumeration value="MADT"/>
+      <xs:enumeration value="GNSS"/>
+      <xs:enumeration value="AVMS"/>
+      <xs:enumeration value="DPI"/>
+      <xs:enumeration value="REMA"/>
+      <xs:enumeration value="APC"/>
+      <xs:enumeration value="TICK"/>
+      <xs:enumeration value="PRVR"/>
+      <xs:enumeration value="RFIDR"/>
+      <xs:enumeration value="EXTD"/>
+      <xs:enumeration value="INTD"/>
+      <xs:enumeration value="OBU"/>
+    </xs:restriction>
+  </xs:simpleType>
   <xs:complexType name="ModuleType">
     <xs:sequence>
-      <xs:element name="Type" type="xs:string"/>
+      <xs:element name="Type" type="ModuleTypeType"/>
       <xs:element name="Model" type="xs:string"/>
       <xs:element name="Manufacturer" type="xs:string"/>
       <xs:element name="SerialNumber" type="xs:string"/>
       <xs:element name="SoftwareVersion" type="xs:string"/>
       <xs:element name="HardwareVersion" type="xs:string"/>
       <xs:element name="MACAddress" type="MACAddressType"/>
-      <xs:element minOccurs="0" name="EcoMode" type="xs:string"/>
-      <xs:element name="Status" type="xs:string"/>
+      <xs:element minOccurs="0" name="EcoMode" type="EcoModeType"/>
+      <xs:element name="Status" type="xs:nonNegativeInteger"/>
       <xs:element minOccurs="0" maxOccurs="16" name="XStatus" type="XStatusType"/>
       <xs:element minOccurs="0" maxOccurs="16" name="StatusList" type="StatusListType"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="SubModules" type="SubModulesType"/>
@@ -109,5 +157,3 @@
     </xs:complexType>
   </xs:element>
 </xs:schema>
-
-  
