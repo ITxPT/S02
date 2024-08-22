@@ -1,5 +1,5 @@
 
-# S02 - Onboard Architecture specifications - Sequoia release (fka 2.2.0)
+# S02 - Onboard Architecture specifications - Sequoia release
 
 This it the github repository for the ITxPT S02 specifications. It contains example files complementing the actual specifications
 as well as JSON schemas and XSDs to use for validation purposes. 
