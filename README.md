@@ -21,7 +21,7 @@ The [Client Development Guide](guidelines/ClientDevelopmentGuide.md) lists some 
 
 Schemas and examples are currently available for each of the following services:
 
-- Inventory (2.1.2)
+- Inventory (2.1.4)
 - GNSSLocation (2.2.1)
 - FMStoIP (2.2.1)
 - VEHICLEtoIP (2.1.2)
@@ -39,6 +39,7 @@ To report any issue found during implementation or question you have regarding t
 To report any issue found during implementation or question you have regarding the content of the specification, please use the dedicated platform: https://ticket.itxpt.eu/
 
 ## Revision History ###
+- Rev  G - inventory updated to new patch version, xml and xsd updated to align with specification document, improved xsd (ecomodes enum, ItemCodeType => range Module/status and SubModule/Status => nonNegativeInteger
 - Rev. F - Inventory,GNSSLocation, VEHICLEtoIP updated to new patch version, add. valid versions added to schemas, examples updated,
            multiple version per schema
 - Rev. E - FMStoIP - XSD updated - flexible VIN (string max. 17 characters), XML inventory example updated
