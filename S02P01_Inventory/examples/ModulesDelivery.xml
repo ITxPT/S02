@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- ITxPT S02P01 Inventory service - Modules Delivery XML Example -->
-<ModulesDelivery version="2.1.3">
+<ModulesDelivery version="2.1.4">
   <Module>
-    <Type>Communication Gateway</Type>
+    <Type>VCG</Type>
     <Model>Model26</Model>
     <Manufacturer>CompanyABC</Manufacturer>
     <SerialNumber>0123456789</SerialNumber>
-    <SoftwareVersion>v1.2.3</SoftwareVersion>
+    <SoftwareVersion>v1.2.3</SoftwareVersion> <!-- keep for backward compability only, remove from spec. version 3.0 -->
     <HardwareVersion>Revision D</HardwareVersion>
     <MACAddress>00:05:68:02:66:E5</MACAddress>
     <EcoMode>ECO0</EcoMode>
-    <Status>0</Status>
-    <XStatus page="1" timestamp="2019-10-24T12:12:12">C0FFFFFFFFFFFFFF</XStatus>
-    <StatusList page="1"> <!--Standard extended status (xstatus) list block -->
+    <Status>0</Status> <!-- keep for backward compability only, remove from spec. version 3.0 -->
+    <XStatus page="1" timestamp="2012-12-13T12:12:12">0000000000F0FFFF</XStatus> <!-- mandatory from version 2.1.0 -->
+    <XStatus page="2" timestamp="2012-12-13T12:12:12">01F0FFFFFFFFFFFF</XStatus>
+    <StatusList page="1"> <!-- Predefined extended status (xstatus) list block -->
       <Item code="1">Generic module status</Item>
       <Item code="2">Consolidated Submodule status</Item>
       <Item code="3">Low uptime</Item>
@@ -34,6 +34,25 @@
       <Item code="19">Time sync</Item>
       <Item code="20">Power supply</Item>
     </StatusList>
+    <StatusList page="2"> <!-- User defined extended status (xstatus) list block -->
+      <Item code="1">LXC status</Item>
+      <Item code="2">VPN status</Item>
+      <Item code="3">Driver HMI connection status</Item>
+      <Item code="4">Driver HMI releaseversion status</Item>   
+    </StatusList>
+    <StatusList page="3"> <!-- User defined extended status (xstatus) list block -->
+      <Item code="1">Framerate status</Item>
+      <Item code="2">FMS version support status</Item>
+      <Item code="3">Packet loss status</Item>
+      <Item code="4">Link status</Item>
+      <Item code="5">Link termination</Item>
+      <Item code="6">Signal level</Item>
+      <Item code="16">RF Signal level</Item>
+      <Item code="17">Antenna power feed</Item>
+      <Item code="18">D-GPS status</Item>
+      <Item code="19">Serial interface status</Item>
+    </StatusList>
+
     <SubModules>
       <Type>FMS-interface</Type>
       <Model>ModelA79</Model>
@@ -41,9 +60,25 @@
       <SerialNumber>2642967405</SerialNumber>
       <SoftwareVersion>sw:118, dcf: 111125</SoftwareVersion>
       <HardwareVersion>6605-214</HardwareVersion>
-      <Status>0</Status>
-      <XStatus page="1" timestamp="2019-10-24T12:12:12">C0FFFFFFFFFFFFFF </XStatus>
+      <Status>0</Status> <!-- keep for backward compability only, remove from spec. version 3.0 -->
+      <XStatus page="1" timestamp="2012-12-13T12:12:12">C0FFFFCC33F0FFFF</XStatus>
+      <XStatus page="3" timestamp="2012-12-13T12:12:12">0300FFFFFFFFFFFF</XStatus>
+      <Extensions></Extensions> <!-- new option in version 2.1.0, put only extentions for submodule here -->
     </SubModules>
+
+    <SubModules>
+      <Type>GPS-receiver</Type>
+      <Model>UBX-M9340</Model>
+      <Manufacturer>u-blox</Manufacturer>
+      <SerialNumber>2642967405</SerialNumber>
+      <SoftwareVersion>sw:7.3.1</SoftwareVersion>
+      <HardwareVersion>2401-214</HardwareVersion>
+      <Status>0</Status> <!-- keep for backward compability only, remove from spec. version 3.0 -->
+      <XStatus page="1" timestamp="2012-12-13T12:12:12">C0FFFFCC33F0FFFF</XStatus> <!-- xstatus is mandatory from version 2.1.0 -->
+      <XStatus page="3" timestamp="2012-12-13T12:12:12">F3FFFFFF03FCFFFF</XStatus>
+      <Extensions></Extensions> <!-- new option in version 2.1.0, put only extentions for submodule here -->
+    </SubModules>
+
     <Services>
       <ServiceName>inventory</ServiceName>
       <ServiceType>itxpt_http</ServiceType>
@@ -64,6 +99,8 @@
       <ServiceName>fmstoip</ServiceName>
       <ServiceType>itxpt_http</ServiceType>
     </Services>
+
+    <Extensions></Extensions> <!-- new option in version 2.1.0, put extentions related to module here -->
   </Module>
-  <Extensions/>
+  <Extensions></Extensions> <!-- generic placeholder for overall extentions -->
 </ModulesDelivery>
