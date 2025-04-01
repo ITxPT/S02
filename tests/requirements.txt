@@ -1,6 +1,0 @@
-pytest
-mysql-connector-python
-python-dotenv
-gitpython
-msal
-lxml
