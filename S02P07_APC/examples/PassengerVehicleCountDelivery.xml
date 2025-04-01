@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ITxPT S02P07 APC service - Passenger Vehicle Count operation XML Example -->
-<PassengerVehicleCountDelivery version="2.1.1">
+<PassengerVehicleCountDelivery version="2.2.1">
   <PassengerVehicleCount>
     <RecordedAtTime>2019-10-24T12:12:12</RecordedAtTime>
     <StopPointRef>10164</StopPointRef>
@@ -21,6 +21,6 @@
     </VehicleCounting>
     <VehicleCountQuality>Regular</VehicleCountQuality>
     <VehicleOccupancy>4</VehicleOccupancy>
-    <VehicleOccupancyRatio>10.45</VehicleOccupancyRatio>
+    <VehicleOccupancyRatio>0.12</VehicleOccupancyRatio>
   </PassengerVehicleCount>
 </PassengerVehicleCountDelivery>

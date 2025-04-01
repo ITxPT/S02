@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema version="1.0" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
-    <xs:appinfo>ITxPT S02P04 FMStoIP configuration service - Add PGN operation XML Schema Definition Version 2.2.0</xs:appinfo>
+    <xs:appinfo>ITxPT S02P04 FMStoIP configuration service - Add PGN operation XML Schema Definition Version 2.3.0</xs:appinfo>
     <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
   </xs:annotation>
   <!-- Type definitions -->
@@ -22,10 +22,10 @@
       </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="PGNType">
-    <xs:sequence>
+    <xs:all>
       <xs:element name="PGNId" type="PGNHexType"/>
       <xs:element name="UpdatePolicy" type="UpdatePolicyType"/>
-    </xs:sequence>
+    </xs:all>
   </xs:complexType>
   <!-- Main element definition -->
   <xs:element name="AddPGN">

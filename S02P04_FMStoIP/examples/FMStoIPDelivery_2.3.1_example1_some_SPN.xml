@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ITxPT S02P04 FMStoIP provision service - FMStoIP operation XML Example -->
+<FMStoIPDelivery version="2.3.1">
+  <RelativeTime>100</RelativeTime>
+  <FMStoIP FMSVersion="0505" VIN="YV3R4A5131A008108">
+    <Frame Status="OK">
+      <PGN>FEF1</PGN>
+      <SA>AC</SA>
+      <Data>F35237C403501FFF</Data>
+      <RelativeTime>1008</RelativeTime>
+      <SPN id="84">
+        <Name>Wheel Based Speed</Name>
+        <Unit>km/h</Unit>
+        <Value>55.3</Value>
+      </SPN>
+      <SPN id="595">
+        <Name>Cruise control active</Name>
+        <Value>switched off</Value>
+      </SPN>
+    </Frame>
+    <Frame Status="OK">
+      <PGN>F004</PGN>
+      <SA>AC</SA>
+      <Data>FFFF9F1AA0FFFFFF</Data>
+      <RelativeTime>1080</RelativeTime>
+      <SPN id="84">
+        <Name>Actual Engine – Percent Torque</Name>
+        <Unit>%</Unit>
+        <Value>34</Value>
+      </SPN>
+      <SPN id="84">
+        <Name>Engine speed</Name>
+        <Unit>rpm</Unit>
+        <Value>852</Value>
+      </SPN>
+    </Frame>
+  </FMStoIP>
+</FMStoIPDelivery>

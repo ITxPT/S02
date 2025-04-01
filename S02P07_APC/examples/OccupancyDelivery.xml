@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ITxPT S02P07 APC service - Occupancy operation XML Example -->
+<OccupancyDelivery version="2.2.1">
+  <Occupancy>
+    <RecordedAtTime>2012-12-13T12:12:12</RecordedAtTime>
+    <ObjectClass>Adult</ObjectClass>
+    <Occupancy>23</Occupancy>
+    <OccupancyRatio>0.5</OccupancyRatio>
+    <OccupancyQuality>Regular</OccupancyQuality>
+  </Occupancy>
+  <Occupancy>
+    <RecordedAtTime>2012-12-13T12:12:12</RecordedAtTime>
+    <ObjectClass>Child</ObjectClass>
+    <Occupancy>12</Occupancy>
+    <OccupancyRatio>0.5</OccupancyRatio>
+    <OccupancyQuality>Regular</OccupancyQuality>
+  </Occupancy>
+  <Occupancy>
+    <RecordedAtTime>2012-12-13T12:12:12</RecordedAtTime>
+    <ObjectClass>Bike</ObjectClass>
+    <Occupancy>2</Occupancy>
+    <OccupancyRatio>0.5</OccupancyRatio>
+    <OccupancyQuality>Regular</OccupancyQuality>
+  </Occupancy>
+  <Occupancy>
+    <RecordedAtTime>2012-12-13T12:12:12</RecordedAtTime>
+    <ObjectClass>Wheelchair</ObjectClass>
+    <Occupancy>1</Occupancy>
+    <OccupancyRatio>1.0</OccupancyRatio>
+    <OccupancyQuality>Regular</OccupancyQuality>
+  </Occupancy>
+  <!-- "Other" is left out since there was no unidentified objects present -->
+</OccupancyDelivery>

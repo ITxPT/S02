@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ITxPT S02P04 FMStoIP provision service - FMStoIP operation XML Example -->
+<FMStoIPDelivery version="2.3.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <RelativeTime>100</RelativeTime>
+  <FMStoIP FMSVersion="0505" VIN="YV3R4A5131A008108">
+    <Frame Status="OK">
+      <PGN>F004</PGN>
+      <SA>AC</SA>
+      <Data>FFFF9F1AA0FFFFFF</Data>
+      <RelativeTime>102</RelativeTime>
+      <SPN id="84">
+        <Name>Actual Engine Percent Torque</Name>
+        <Unit>%</Unit>
+        <Value>34</Value>
+      </SPN>
+      <SPN id="84">
+        <Name>Engine speed</Name>
+        <Unit>rpm</Unit>
+        <Value>852</Value>
+      </SPN>
+    </Frame>
+    <Frame Status="OK">
+      <PGN>FEF1</PGN>
+      <SA>AC</SA>
+      <Data>F352370C03501FFF</Data>
+      <RelativeTime>110</RelativeTime>
+      <SPN id="70">
+        <Name>Parking Brake Switch</Name>
+        <Unit xsi:nil="true"/>
+        <Value>Parking brake not set</Value>
+        <RawValue>0</RawValue>
+      </SPN>
+      <SPN id="84">
+        <Name>Wheel Based Speed</Name>
+        <Unit>km/h</Unit>
+        <Value>55.3</Value>
+      </SPN>
+      <SPN id="598">
+        <Name>Clutch switch</Name>
+        <Unit xsi:nil="true"/>
+        <Value>pedal released</Value>
+        <RawValue>0</RawValue>
+      </SPN>
+      <SPN id="597">
+        <Name>Brake switch</Name>
+        <Unit xsi:nil="true"/>
+        <Value>pedal released</Value>
+        <RawValue>0</RawValue>
+      </SPN>
+      <SPN id="595">
+        <Name>Cruise control active</Name>
+        <Unit xsi:nil="true"/>
+        <Value>switched off</Value>
+        <RawValue>0</RawValue>
+      </SPN>
+      <SPN id="527">
+        <Name>Cruise control states</Name>
+        <Unit xsi:nil="true"/>
+        <Value>Off/Disabled</Value>
+        <RawValue>0</RawValue>
+      </SPN>
+      <SPN id="976">
+        <Name>PTO state</Name>
+        <Unit xsi:nil="true"/>
+        <Value>not available</Value>
+        <RawValue>1F</RawValue>
+      </SPN>
+    </Frame>
+    <Frame Status="OK">
+      <PGN>F004</PGN>
+      <SA>AC</SA>
+      <Data>FFFFA61AF0FFFFFF</Data>
+      <RelativeTime>122</RelativeTime>
+      <SPN id="84">
+        <Name>Actual Engine Percent Torque</Name>
+        <Unit>%</Unit>
+        <Value>41</Value>
+      </SPN>
+      <SPN id="84">
+        <Name>Engine speed</Name>
+        <Unit>rpm</Unit>
+        <Value>862</Value>
+      </SPN>
+    </Frame>
+    <Frame Status="OK">
+      <PGN>F004</PGN>
+      <SA>AC</SA>
+      <Data>FFFFA41AB1FFFFFF</Data>
+      <RelativeTime>142</RelativeTime>
+      <SPN id="84">
+        <Name>Actual Engine Percent Torque</Name>
+        <Unit>%</Unit>
+        <Value>39</Value>
+      </SPN>
+      <SPN id="84">
+        <Name>Engine speed</Name>
+        <Unit>rpm</Unit>
+        <Value>854</Value>
+      </SPN>
+    </Frame>
+    <Frame Status="OK">
+      <PGN>F004</PGN>
+      <SA>AC</SA>
+      <Data>FFFFA01AB1FFFFFF</Data>
+      <RelativeTime>162</RelativeTime>
+      <SPN id="84">
+        <Name>Actual Engine Percent Torque</Name>
+        <Unit>%</Unit>
+        <Value>35</Value>
+      </SPN>
+      <SPN id="84">
+        <Name>Engine speed</Name>
+        <Unit>rpm</Unit>
+        <Value>854</Value>
+      </SPN>
+    </Frame>
+    <Frame Status="OK">
+      <PGN>F004</PGN>
+      <SA>AC</SA>
+      <Data>FFFFB41BA6FFFFFF</Data>
+      <RelativeTime>182</RelativeTime>
+      <SPN id="84">
+        <Name>Actual Engine Percent Torque</Name>
+        <Unit>%</Unit>
+        <Value>55</Value>
+      </SPN>
+      <SPN id="84">
+        <Name>Engine speed</Name>
+        <Unit>rpm</Unit>
+        <Value>885</Value>
+      </SPN>
+    </Frame>
+  </FMStoIP>
+</FMStoIPDelivery>

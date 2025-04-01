@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+            xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+            elementFormDefault="qualified" 
+            vc:minVersion="1.1" 
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <xs:annotation>
+      <xs:appinfo>ITxPT S02P03 GNSSLocation service - GNSSLocation Delivery XML Schema Definition Version 2.3.0</xs:appinfo>
+      <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
+  </xs:annotation>
+  <!-- Type definitions -->
+  <xs:simpleType name="VersionType">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="2.3.0"/>
+      </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DirectionLatitudeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="N"/>
+      <xs:enumeration value="S"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DegreeLatitudeType">
+    <xs:restriction base="xs:double">
+      <xs:minInclusive value="-90.0"/>
+      <xs:maxInclusive value="+90.0"/>     
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DirectionLongitudeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="E"/>
+      <xs:enumeration value="W"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DegreeLongitudeType">
+    <xs:restriction base="xs:double">
+      <xs:minInclusive value="-180.0"/>
+      <xs:maxInclusive value="+180.0"/>     
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="LatitudeType">
+    <xs:all>
+      <xs:element name="Degree" type="DegreeLatitudeType" nillable="true"/>
+      <xs:element name="Direction" type="DirectionLatitudeType" nillable="true"/>
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="LongitudeType">
+    <xs:all>
+      <xs:element name="Degree" type="DegreeLongitudeType" nillable="true"/>
+      <xs:element name="Direction" type="DirectionLongitudeType" nillable="true"/>
+    </xs:all>
+  </xs:complexType>
+  <xs:simpleType name="SignalQualityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="aGPS"/>
+      <xs:enumeration value="dGPS"/>
+      <xs:enumeration value="Estimated"/>
+      <xs:enumeration value="GPS"/>
+      <xs:enumeration value="NotValid"/>
+      <xs:enumeration value="Unknown"/>
+      <xs:enumeration value="PPS"/>
+      <xs:enumeration value="RTK"/>
+      <xs:enumeration value="Float-RTK"/>
+      <xs:enumeration value="Manual"/>
+      <xs:enumeration value="Simulation"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="FixType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NoFix"/>
+      <xs:enumeration value="2D"/>
+      <xs:enumeration value="3D"/>
+      <xs:enumeration value="DR"/>
+      <xs:enumeration value="3D+DR"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="GNSSTypeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GPS"/>
+      <xs:enumeration value="Glonass"/>
+      <xs:enumeration value="Galileo"/>
+      <xs:enumeration value="Beidou"/>
+      <xs:enumeration value="IRNSS"/>
+      <xs:enumeration value="Other"/>
+      <xs:enumeration value="DeadReckoning"/>
+      <xs:enumeration value="MixedGNSSTypes"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="GNSSTypesType">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="GNSSTypeName" type="GNSSTypeNameType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="GNSSTypeNameType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GPS"/>
+      <xs:enumeration value="Glonass"/>
+      <xs:enumeration value="Galileo"/>
+      <xs:enumeration value="Beidou"/>
+      <xs:enumeration value="IRNSS"/>
+      <xs:enumeration value="Other"/>
+      <xs:enumeration value="DeadReckoning"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="GNSSCoordinateSystemType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CH1903"/>
+      <xs:enumeration value="ETSR89"/>
+      <xs:enumeration value="ITRS/ITRF"/>
+      <xs:enumeration value="NAD27"/>
+      <xs:enumeration value="NAD83"/>
+      <xs:enumeration value="WGS84"/>
+      <xs:enumeration value="PZ90"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="GNSSLocationType">
+    <xs:choice maxOccurs="unbounded">
+        <!-- Data can appear multiple times -->
+        <xs:element minOccurs="0" name="Data" type="xs:string"/>
+        <!-- Other elements should appear only once or optionally -->
+        <xs:element minOccurs="0" name="DataType" type="xs:string"/>
+        <xs:element name="Latitude" type="LatitudeType"/>
+        <xs:element name="Longitude" type="LongitudeType"/>
+        <xs:element minOccurs="0" name="Altitude" type="xs:double" nillable="true"/>
+        <xs:element minOccurs="0" name="Time" type="xs:time"/>
+        <xs:element minOccurs="0" name="Date" type="xs:date"/>
+        <xs:element minOccurs="0" name="SpeedOverGround" type="xs:double"/>
+        <xs:element name="SignalQuality" type="SignalQualityType"/>
+        <xs:element name="Fix" type="FixType"/>
+        <xs:element minOccurs="0" name="NumberOfSatellites" type="xs:nonNegativeInteger"/>
+        <xs:element minOccurs="0" name="HorizontalDilutionOfPrecision" type="xs:double"/>
+        <xs:element minOccurs="0" name="VerticalDilutionOfPrecision" type="xs:double"/>
+        <xs:element minOccurs="0" name="TrackDegreeTrue" type="xs:double"/>
+        <xs:element minOccurs="0" name="TrackDegreeMagnetic" type="xs:double"/>
+        <xs:element minOccurs="0" name="GNSSType" type="GNSSTypeType"/>
+        <xs:element name="GNSSTypes" type="GNSSTypesType"/>
+        <xs:element name="GNSSCoordinateSystem" type="GNSSCoordinateSystemType"/>
+    </xs:choice>
+
+    <!-- Assert conditions to enforce multiplicity and uniqueness constraints -->
+    <xs:assert test="count(DataType) &lt;= 1"/>
+    <xs:assert test="count(Latitude) = 1"/>
+    <xs:assert test="count(Longitude) = 1"/>
+    <xs:assert test="count(Altitude) &lt;= 1"/>
+    <xs:assert test="count(Time) &lt;= 1"/>
+    <xs:assert test="count(Date) &lt;= 1"/>
+    <xs:assert test="count(SpeedOverGround) &lt;= 1"/>
+    <xs:assert test="count(SignalQuality) = 1"/>
+    <xs:assert test="count(Fix) = 1"/>
+    <xs:assert test="count(NumberOfSatellites) &lt;= 1"/>
+    <xs:assert test="count(HorizontalDilutionOfPrecision) &lt;= 1"/>
+    <xs:assert test="count(VerticalDilutionOfPrecision) &lt;= 1"/>
+    <xs:assert test="count(TrackDegreeTrue) &lt;= 1"/>
+    <xs:assert test="count(TrackDegreeMagnetic) &lt;= 1"/>
+    <xs:assert test="count(GNSSType) &lt;= 1"/>
+    <xs:assert test="count(GNSSTypes) = 1"/>
+    <xs:assert test="count(GNSSCoordinateSystem) = 1"/>
+
+
+      <!-- Assertion to enforce that:
+        - If SignalQuality is 'NotValid': Latitude and Longitude elements 
+          (Degree and Direction) must have xsi:nil="true".
+        - If SignalQuality is not 'NotValid': the same elements must NOT 
+          have xsi:nil="true". -->
+    <xs:assert test="(SignalQuality = 'NotValid' and 
+                     Latitude/Degree/@xsi:nil = 'true' and Latitude/Direction/@xsi:nil = 'true' 
+                     and Longitude/Degree/@xsi:nil = 'true' and Longitude/Direction/@xsi:nil = 'true')
+               or
+               (SignalQuality != 'NotValid' and 
+                     (not(Latitude/Degree/@xsi:nil) or Latitude/Degree/@xsi:nil != 'true') and
+                     (not(Latitude/Direction/@xsi:nil) or Latitude/Direction/@xsi:nil != 'true') and
+                     (not(Longitude/Degree/@xsi:nil) or Longitude/Degree/@xsi:nil != 'true') and
+                     (not(Longitude/Direction/@xsi:nil) or Longitude/Direction/@xsi:nil != 'true'))"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+
+  </xs:complexType>
+  <!-- Main element definition -->
+  <xs:element name="GNSSLocationDelivery">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="GNSSLocation" type="GNSSLocationType"/>
+        <xs:element minOccurs="0" name="Extensions" type="xs:anyType" />
+      </xs:all>
+      <xs:attribute name="version" use="required" type="VersionType"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

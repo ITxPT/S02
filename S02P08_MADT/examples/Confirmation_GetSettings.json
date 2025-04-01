@@ -2,6 +2,10 @@
   "retCode": 0,
   "volume": "E12DE12D",
   "brightness": 210,
+  "defaultActiveMode": "PRIMARY",
+  "activeMode": "PRIMARY",
+  "defaultVisualMode": "UNMUTE",
+  "visualMode": "UNMUTE",
   "contrast": 150,
   "language": "fr"
 }

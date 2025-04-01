@@ -1,41 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+<xs:schema  version="1.1" 
+            xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+            xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+            elementFormDefault="qualified" 
+            vc:minVersion="1.1" 
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <xs:annotation>
-    <xs:appinfo>ITxPT S02P06 AVMS service - Vehicle Monitoring operation XML Schema Definition Version 2.2.0</xs:appinfo>
+    <xs:appinfo>ITxPT S02P06 AVMS service - Vehicle Monitoring operation XML Schema Definition Version 2.3.0</xs:appinfo>
     <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
   </xs:annotation>
   <!-- Type definitions -->
   <xs:simpleType name="VersionType">
       <xs:restriction base="xs:string">
-        <xs:enumeration value="2.2.0"/>
-        <xs:enumeration value="2.2.1"/>
+        <xs:enumeration value="2.3.0"/>
       </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="PreviousCallRefType">
-    <xs:sequence>
+    <xs:all>
       <xs:element name="StopPointRef" type="xs:string"/>
       <xs:element minOccurs="0" name="VisitNumber" type="xs:positiveInteger"/>
       <xs:element name="Order" type="xs:positiveInteger"/>
-    </xs:sequence>
+    </xs:all>
   </xs:complexType>
   <xs:complexType name="MonitoredCallRefType">
-    <xs:sequence>
+    <xs:all>
       <xs:element name="StopPointRef" type="xs:string"/>
       <xs:element minOccurs="0" name="VisitNumber" type="xs:positiveInteger"/>
       <xs:element name="Order" type="xs:positiveInteger"/>
       <xs:element name="VehicleAtStop" type="xs:boolean"/>
-    </xs:sequence>
+    </xs:all>
   </xs:complexType>
   <xs:complexType name="ProgressBetweenStopsType">
-    <xs:sequence>
+    <xs:all>
       <xs:element name="PreviousCallRef" type="PreviousCallRefType"/>
       <xs:element name="MonitoredCallRef" type="MonitoredCallRefType"/>
       <xs:element name="LinkDistance" type="xs:decimal"/>
       <xs:element name="Percentage" type="xs:decimal"/>
-    </xs:sequence>
+    </xs:all>
   </xs:complexType>
   <xs:complexType name="VehicleActivityType">
-    <xs:sequence>
+    <xs:choice maxOccurs="unbounded">
       <xs:element name="RecordedAtTime" type="xs:dateTime"/>
       <xs:element name="ItemIdentifier" type="xs:string"/>
       <xs:element name="JourneyPatternRef" type="xs:string"/>
@@ -43,24 +47,35 @@
       <xs:element name="ProgressBetweenStops" type="ProgressBetweenStopsType"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="VehicleActivityNote" type="xs:string"/>
       <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
-    </xs:sequence>
+    </xs:choice>
+    <!-- Assert conditions to enforce multiplicity and uniqueness constraints -->
+    <xs:assert test="count(RecordedAtTime) = 1"/>
+    <xs:assert test="count(ItemIdentifier) = 1"/>
+    <xs:assert test="count(JourneyPatternRef) = 1"/>
+    <xs:assert test="count(VehicleJourneyRef) &lt;= 1"/>
+    <xs:assert test="count(ProgressBetweenStops) = 1"/>
+    <xs:assert test="count(Extensions) &lt;= 1"/>
   </xs:complexType>
   <xs:complexType name="VehicleActivityCancellationType">
-    <xs:sequence>
+    <xs:choice maxOccurs="unbounded">
       <xs:element minOccurs="0" name="RecordedAtTime" type="xs:dateTime"/>
       <xs:element minOccurs="0" name="ItemIdentifier" type="xs:string"/>
       <xs:element minOccurs="0" name="PatternRef" type="xs:string"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Reason" type="xs:string"/>
-    </xs:sequence>
+    </xs:choice>
+    <!-- Assert conditions to enforce multiplicity and uniqueness constraints -->
+    <xs:assert test="count(RecordedAtTime) &lt;= 1"/>
+    <xs:assert test="count(ItemIdentifier) &lt;= 1"/>
+    <xs:assert test="count(PatternRef) &lt;= 1"/>
   </xs:complexType>
   <!-- Main element definition -->
   <xs:element name="VehicleMonitoringDelivery">
     <xs:complexType>
-      <xs:sequence>
+      <xs:all>
         <xs:element name="VehicleActivity" type="VehicleActivityType"/>
         <xs:element minOccurs="0" name="VehicleActivityCancellation" type="VehicleActivityCancellationType"/>
         <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
-      </xs:sequence>
+      </xs:all>
       <xs:attribute name="version" use="required" type="VersionType"/>
     </xs:complexType>
   </xs:element>

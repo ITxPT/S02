@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema  version="1.0"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+            xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+            elementFormDefault="qualified" 
+            vc:minVersion="1.1" 
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <xs:annotation>
+    <xs:appinfo>ITxPT S02P07 APC service - Occupancy operation XML Schema Definition Version 2.2.0</xs:appinfo>
+    <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
+  </xs:annotation>
+  <!-- Type definitions -->
+  <xs:simpleType name="VersionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="2.2.0"/>
+      <xs:enumeration value="2.2.1"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OccupancyQualityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Regular"/>
+      <xs:enumeration value="Defect"/>
+      <xs:enumeration value="Other"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ObjectClassType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Adult"/>
+      <xs:enumeration value="Child"/>
+      <xs:enumeration value="Pram"/>
+      <xs:enumeration value="Bike"/>
+      <xs:enumeration value="Wheelchair"/>
+      <xs:enumeration value="Other"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OccupancyRatioType">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0.0"/>
+      <xs:maxInclusive value="10.0"/> <!-- 1.0 is 100%, more that 100% is possible so we put max on 10.0 that is 1000% -->
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="OccupancyType">
+    <xs:all>
+      <xs:element name="RecordedAtTime" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="StopPointRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="ObjectClass" type="ObjectClassType"/>
+      <xs:element minOccurs="0" name="OccupancyQuality" type="OccupancyQualityType"/>
+      <xs:element name="Occupancy" type="xs:nonNegativeInteger"/>
+      <xs:element minOccurs="0" name="OccupancyRatio" type="OccupancyRatioType"/>
+      <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
+    </xs:all>
+  </xs:complexType>
+  <!-- Main element definition -->
+  <xs:element name="OccupancyDelivery">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element maxOccurs="unbounded" name="Occupancy" type="OccupancyType"/>
+        <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
+      </xs:choice>  
+      <xs:attribute name="version" type="VersionType" use="required"/>
+      <!-- Assert conditions to enforce multiplicity and uniqueness constraints -->
+      <xs:assert test="count(Occupancy) &gt;= 1"/>
+      <xs:assert test="count(Extensions) &lt;= 1"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

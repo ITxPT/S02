@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+<xs:schema  version="1.1" 
+            xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+            xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+            elementFormDefault="qualified" 
+            vc:minVersion="1.1" 
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <xs:annotation>
-    <xs:appinfo>ITxPT S02P06 AVMS service - Planned Pattern operation XML Schema Definition Version 2.2.0</xs:appinfo>
+    <xs:appinfo>ITxPT S02P06 AVMS service - Planned Pattern operation XML Schema Definition Version 2.3.0</xs:appinfo>
     <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
   </xs:annotation>
   <!-- Type definitions -->
   <xs:simpleType name="VersionType">
       <xs:restriction base="xs:string">
-        <xs:enumeration value="2.2.0"/>
-        <xs:enumeration value="2.2.1"/>
+        <xs:enumeration value="2.3.0"/>
       </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="ISO639-3String">
@@ -39,16 +43,32 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ViaType">
-    <xs:sequence>
+    <xs:choice maxOccurs="unbounded">
       <xs:element minOccurs="0" name="PlaceRef" type="xs:string"/>
       <xs:element maxOccurs="unbounded" name="PlaceName" type="LanguageStringType"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="PlaceShortName" type="LanguageStringType"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="PlaceLongName" type="LanguageStringType"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="PlaceTtsName" type="LanguageStringType"/>
-    </xs:sequence>
+    </xs:choice>
+    <!-- Assert conditions to enforce multiplicity and uniqueness constraints -->
+    <xs:assert test="count(PlaceRef) &lt;= 1"/>
+    <xs:assert test="count(PlaceName) &gt;= 1"/>
+  </xs:complexType>
+  <xs:complexType name="PointsOfInterestType">
+    <xs:choice maxOccurs="unbounded">
+      <xs:element minOccurs="0" name="PoiName" type="LanguageStringType"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PoiShortName" type="LanguageStringType"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PoiLongName" type="LanguageStringType"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PoiTtsName" type="LanguageStringType"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PoiExitDirections" type="LanguageStringType"/>
+      <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
+    </xs:choice>
+    <!-- Assert conditions to enforce multiplicity and uniqueness constraints -->
+    <xs:assert test="count(PoiName) = 1"/>
+    <xs:assert test="count(Extensions) &lt;= 1"/>
   </xs:complexType>
   <xs:complexType name="PatternStopType">
-    <xs:sequence>
+    <xs:choice maxOccurs="unbounded">
       <xs:element name="StopPointRef" type="xs:string"/>
       <xs:element minOccurs="0" name="VisitNumber" type="xs:positiveInteger"/>
       <xs:element name="Order" type="xs:positiveInteger"/>
@@ -77,8 +97,27 @@
       <xs:element minOccurs="0" name="ArrivalBoardingActivity" type="ArrivalBoardingActivityType"/>
       <xs:element minOccurs="0" name="DeparturePlatformName" type="xs:string"/>
       <xs:element minOccurs="0" name="DepartureBoardingActivity" type="DepartureBoardingActivityType"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PointsOfInterest" type="PointsOfInterestType"/>
       <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
-    </xs:sequence>
+    </xs:choice>
+    <!-- Assert conditions to enforce multiplicity and uniqueness constraints -->
+    <xs:assert test="count(StopPointRef) = 1"/>
+    <xs:assert test="count(VisitNumber) &lt;= 1"/>
+    <xs:assert test="count(Order) = 1"/>
+    <xs:assert test="count(StopPointName) &gt;= 1"/>
+    <xs:assert test="count(ExtraCall) &lt;= 1"/>
+    <xs:assert test="count(CancelledCall) &lt;= 1"/>
+    <xs:assert test="count(DivertedCall) &lt;= 1"/>
+    <xs:assert test="count(NoCall) &lt;= 1"/>
+    <xs:assert test="count(BoardingStretch) &lt;= 1"/>
+    <xs:assert test="count(RequestStop) &lt;= 1"/>
+    <xs:assert test="count(ExternalDestinationRef) &lt;= 1"/>
+    <xs:assert test="count(LineRef) &lt;= 1"/>
+    <xs:assert test="count(ArrivalPlatformName) &lt;= 1"/>
+    <xs:assert test="count(ArrivalBoardingActivity) &lt;= 1"/>
+    <xs:assert test="count(DeparturePlatformName) &lt;= 1"/>
+    <xs:assert test="count(DepartureBoardingActivity) &lt;= 1"/>
+    <xs:assert test="count(Extensions) &lt;= 1"/>
   </xs:complexType>
   <xs:complexType name="PatternStopsType">
     <xs:sequence>
@@ -86,7 +125,7 @@
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="PlannedPatternType">
-    <xs:sequence>
+    <xs:choice maxOccurs="unbounded">
       <xs:element name="RecordedAtTime" type="xs:dateTime"/>
       <xs:element name="PatternRef" type="xs:string"/>
       <xs:element name="VehicleJourneyRef" type="xs:string"/>
@@ -114,16 +153,36 @@
       <xs:element name="PatternStops" type="PatternStopsType"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="PlannedPatternNote" type="xs:string"/>
       <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
-    </xs:sequence>
+    </xs:choice>
+    <!-- Assert conditions to enforce multiplicity and uniqueness constraints -->
+    <xs:assert test="count(RecordedAtTime) = 1"/>
+    <xs:assert test="count(PatternRef) = 1"/>
+    <xs:assert test="count(VehicleJourneyRef) = 1"/>
+    <xs:assert test="count(OperatingDayDate) &lt;= 1"/>
+    <xs:assert test="count(RouteRef) = 1"/>
+    <xs:assert test="count(LineRef) = 1"/>
+    <xs:assert test="count(PublishedLineLabel) &gt;= 1"/>
+    <xs:assert test="count(PublishedTtsLineLabel) &gt;= 1"/>
+    <xs:assert test="count(DirectionRef) = 1"/>
+    <xs:assert test="count(ExternalLineRef) = 1"/>
+    <xs:assert test="count(OriginPlaceRef) &lt;= 1"/>
+    <xs:assert test="count(OriginName) &gt;= 1"/>
+    <xs:assert test="count(DestinationPlaceRef) &lt;= 1"/>
+    <xs:assert test="count(DestinationName) &gt;= 1"/>
+    <xs:assert test="count(PatternStops) = 1"/>
+    <xs:assert test="count(Extensions) &lt;= 1"/>
   </xs:complexType>
   <!-- Main element definition -->
   <xs:element name="PlannedPatternDelivery">
     <xs:complexType>
-      <xs:sequence>
+      <xs:choice maxOccurs="unbounded">
         <xs:element maxOccurs="2" name="PlannedPattern" type="PlannedPatternType"/>
         <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
-      </xs:sequence>
+      </xs:choice>
       <xs:attribute name="version" use="required" type="VersionType"/>
+      <!-- Assert conditions to enforce multiplicity and uniqueness constraints -->
+      <xs:assert test="count(PlannedPattern) &gt;= 1 and count(PlannedPattern) &lt;= 2"/>
+      <xs:assert test="count(Extensions) &lt;= 1"/>
     </xs:complexType>
   </xs:element>
 </xs:schema>

@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-07/schema",
     "$id": "http://itxtp.org/schemas/Request_IAmAlive.json",
     "type": "object",
-    "title": "ITxPT S02P08 MADT service - MADT IAmAlive request JSON Schema Definition Version 2.1.1",
+    "title": "ITxPT S02P08 MADT service - MADT IAmAlive request JSON Schema Definition Version 3.0.0",
     "description": "ITxPT service interface for standardized interoperability in public transport - JSON schema",
     "default": {},
     "additionalProperties": true,

@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema version="1.2"
-           xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           elementFormDefault="qualified">
+<xs:schema  version="1.2"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+            xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+            elementFormDefault="qualified" 
+            vc:minVersion="1.1" 
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <xs:annotation>
-      <xs:appinfo>ITxPT S02P01 Module Inventory service - Modules Delivery XML Schema Definition Version 2.1.4</xs:appinfo>
+      <xs:appinfo>ITxPT S02P01 Module Inventory service - Modules Delivery XML Schema Definition Version 2.2.0</xs:appinfo>
       <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
   </xs:annotation>
   <!-- Type definitions -->
   <xs:simpleType name="VersionType">
       <xs:restriction base="xs:string">
-        <xs:enumeration value="2.1.1"/>
-        <xs:enumeration value="2.1.2"/>
-        <xs:enumeration value="2.1.3"/>
-        <xs:enumeration value="2.1.4"/>
+        <xs:enumeration value="2.2.0"/>
+      </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ReleaseType">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="Linden"/>
       </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="MACAddressType">
@@ -54,7 +59,7 @@
     </xs:restriction>  
   </xs:simpleType>
   <xs:complexType name="SubModulesType">
-    <xs:sequence>
+    <xs:choice maxOccurs="unbounded">
       <xs:element name="Type" type="xs:string"/>
       <xs:element name="Model" type="xs:string"/>
       <xs:element name="Manufacturer" type="xs:string"/>
@@ -64,7 +69,17 @@
       <xs:element name="Status" type="xs:nonNegativeInteger"/>
       <xs:element minOccurs="0" maxOccurs="16" name="XStatus" type="XStatusType"/>
       <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
-    </xs:sequence>
+    </xs:choice>
+    <!-- Assert conditions to enforce multiplicity and uniqueness constraints -->
+    <xs:assert test="count(Type) = 1"/>
+    <xs:assert test="count(Model) = 1"/>
+    <xs:assert test="count(Manufacturer) = 1"/>
+    <xs:assert test="count(SerialNumber) = 1"/>
+    <xs:assert test="count(SoftwareVersion) = 1"/>
+    <xs:assert test="count(HardwareVersion) = 1"/>
+    <xs:assert test="count(Status) = 1"/>
+    <xs:assert test="count(XStatus) &lt;= 16"/>
+    <xs:assert test="count(Extensions) &lt;= 1"/>
   </xs:complexType>
   <xs:simpleType name="ServiceNameType">
     <xs:restriction base="xs:string">
@@ -89,10 +104,10 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ServicesType">
-    <xs:sequence>
+    <xs:all>
       <xs:element name="ServiceName" type="ServiceNameType"/>
       <xs:element name="ServiceType" type="ServiceTypeType"/>
-    </xs:sequence>
+    </xs:all>
   </xs:complexType>
   <xs:complexType name="ItemType">
     <xs:simpleContent>
@@ -128,7 +143,7 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ModuleType">
-    <xs:sequence>
+    <xs:choice maxOccurs="unbounded">
       <xs:element name="Type" type="ModuleTypeType"/>
       <xs:element name="Model" type="xs:string"/>
       <xs:element name="Manufacturer" type="xs:string"/>
@@ -143,17 +158,35 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="SubModules" type="SubModulesType"/>
       <xs:element minOccurs="1" maxOccurs="unbounded" name="Services" type="ServicesType"/>
       <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
-    </xs:sequence>
+    </xs:choice>
+    <!-- Assert conditions to enforce multiplicity and uniqueness constraints -->
+    <xs:assert test="count(Type) = 1"/>
+    <xs:assert test="count(Model) = 1"/>
+    <xs:assert test="count(Manufacturer) = 1"/>
+    <xs:assert test="count(SerialNumber) = 1"/>
+    <xs:assert test="count(SoftwareVersion) = 1"/>
+    <xs:assert test="count(HardwareVersion) = 1"/>
+    <xs:assert test="count(MACAddress) = 1"/>
+    <xs:assert test="count(EcoMode) &lt;= 1"/>
+    <xs:assert test="count(Status) = 1"/>
+    <xs:assert test="count(XStatus) &lt;= 16"/>
+    <xs:assert test="count(StatusList) &lt;= 16"/>
+    <xs:assert test="count(SubModules) &lt;= 16"/>
+    <xs:assert test="count(Services) &gt; 0"/>
+    <xs:assert test="count(Extensions) &lt;= 1"/>
   </xs:complexType>
 
   <!-- Main element definition -->
   <xs:element name="ModulesDelivery">
     <xs:complexType>
-      <xs:sequence>
+      <xs:all>
         <xs:element name="Module" type="ModuleType"/>
         <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
-      </xs:sequence>
+      </xs:all>
       <xs:attribute name="version" use="required" type="VersionType"/>
+      <xs:attribute name="release" use="required" type="ReleaseType"/>
+      <xs:attribute name="atdatetime" use="required" type="xs:dateTime"/>
+      <xs:attribute name="interval" use="required" type="xs:positiveInteger"/>
     </xs:complexType>
   </xs:element>
 </xs:schema>

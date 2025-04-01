@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema version="1.0" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema  version="1.1"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+            xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+            elementFormDefault="qualified" 
+            vc:minVersion="1.1" 
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <xs:annotation>
-    <xs:appinfo>ITxPT S02P07 APC service - Passenger Door Count operation XML Schema Definition Version 2.1.1</xs:appinfo>
+    <xs:appinfo>ITxPT S02P07 APC service - Passenger Door Count operation XML Schema Definition Version 2.2.1</xs:appinfo>
     <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
   </xs:annotation>
   <!-- Type definitions -->
   <xs:simpleType name="VersionType">
       <xs:restriction base="xs:string">
-        <xs:enumeration value="2.1.1"/>
+        <xs:enumeration value="2.2.0"/>
+        <xs:enumeration value="2.2.1"/>
       </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="DoorCountQualityType">
@@ -28,27 +34,36 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="PassengerCountingType">
-    <xs:sequence>
+    <xs:all>
       <xs:element minOccurs="0" name="ObjectClass" type="ObjectClassType"/>
       <xs:element name="DoorPassengerIn" type="xs:nonNegativeInteger"/>
       <xs:element name="DoorPassengerOut" type="xs:nonNegativeInteger"/>
-    </xs:sequence>
+      <xs:element minOccurs="0" name="RelativeDoorPassengerIn" type="xs:nonNegativeInteger"/>
+      <xs:element minOccurs="0" name="RelativeDoorPassengerOut" type="xs:nonNegativeInteger"/>
+    </xs:all>
   </xs:complexType>
   <xs:complexType name="PassengerDoorCountType">
-    <xs:sequence>
+    <xs:choice maxOccurs="unbounded">
       <xs:element name="RecordedAtTime" type="xs:dateTime"/>
-      <xs:element name="DoorId" type="xs:nonNegativeInteger"/>
+      <xs:element name="DoorId" type="xs:positiveInteger"/>
       <xs:element maxOccurs="unbounded" name="PassengerCounting" type="PassengerCountingType"/>
       <xs:element minOccurs="0" name="DoorCountQuality" type="DoorCountQualityType"/>
-    </xs:sequence>
+      <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
+    </xs:choice>
+    <!-- Assert conditions to enforce multiplicity and uniqueness constraints -->
+    <xs:assert test="count(RecordedAtTime) = 1"/>
+    <xs:assert test="count(DoorId) = 1"/>
+    <xs:assert test="count(PassengerCounting) &gt;= 1"/>
+    <xs:assert test="count(DoorCountQuality) &lt;= 1"/>
+    <xs:assert test="count(Extensions) &lt;= 1"/>
   </xs:complexType>
   <!-- Main element definition -->
   <xs:element name="PassengerDoorCountDelivery">
     <xs:complexType>
-      <xs:sequence>
+      <xs:all>
         <xs:element name="PassengerDoorCount" type="PassengerDoorCountType"/>
         <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
-      </xs:sequence>
+      </xs:all>
       <xs:attribute name="version" type="VersionType" use="required"/>
     </xs:complexType>
   </xs:element>

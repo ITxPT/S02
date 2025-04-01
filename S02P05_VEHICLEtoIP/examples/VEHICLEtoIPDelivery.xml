@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ITxPT S02P05 VEHICLEtoIP service - VEHICLEtoIP Delivery XML Example -->
-<VEHICLEtoIPDelivery version="2.1.2">
+<VEHICLEtoIPDelivery version="2.2.1">
   <VEHICLEtoIP>
     <RecordedAtTime>2019-10-24T12:12:12</RecordedAtTime>
     <Odospeed>123.45</Odospeed>
@@ -22,6 +22,13 @@
     <VehicleNumber>str1234</VehicleNumber>
     <VehicleMode>true</VehicleMode>
     <VehicleOrder>745</VehicleOrder>
+    <ITSPower>
+      <ContinuousOn>true</ContinuousOn>
+      <PassiveOn>true</PassiveOn>
+      <ActiveOn>true</ActiveOn>
+      <LowBattery>false</LowBattery>
+      <FullPowerAvailable>true</FullPowerAvailable>
+    </ITSPower>
     <Extensions>str1234</Extensions>
   </VEHICLEtoIP>
 </VEHICLEtoIPDelivery>

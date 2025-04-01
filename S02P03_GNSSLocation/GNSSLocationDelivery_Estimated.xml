@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ITxPT S02P03 GNSSLocation service - GNSSLocation Delivery XML Example -->
+<GNSSLocationDelivery version="2.3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <GNSSLocation>
+    <Data>$GPRMC,080530.526,A,4852.655,N,00220.337,E,,,241019,000.0,W*70</Data>
+    <DataType>NMEA 0183</DataType> 
+    <Latitude>
+      <Degree>48.877583</Degree>
+      <Direction>N</Direction>
+    </Latitude>
+    <Longitude>
+      <Degree>2.338950</Degree>
+      <Direction>E</Direction>
+    </Longitude>
+    <Altitude>12.2</Altitude>
+    <Time>08:05:30</Time>
+    <Date>2019-10-24</Date>
+    <SpeedOverGround>11.52356</SpeedOverGround>
+    <SignalQuality>Estimated</SignalQuality>
+    <Fix>NoFix</Fix>
+    <NumberOfSatellites>7</NumberOfSatellites>
+    <HorizontalDilutionOfPrecision>10.01</HorizontalDilutionOfPrecision>
+    <VerticalDilutionOfPrecision>21.3</VerticalDilutionOfPrecision>
+    <TrackDegreeTrue>91.2</TrackDegreeTrue>
+    <TrackDegreeMagnetic>91.0</TrackDegreeMagnetic>
+    <GNSSTypes>
+      <GNSSTypeName>DeadReckoning</GNSSTypeName>
+    </GNSSTypes>
+    <GNSSCoordinateSystem>WGS84</GNSSCoordinateSystem>
+  </GNSSLocation>
+  <Extensions />
+</GNSSLocationDelivery>

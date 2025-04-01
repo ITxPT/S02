@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema version="1.0" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema  version="1.1" 
+            xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+            xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+            elementFormDefault="qualified" 
+            vc:minVersion="1.1" 
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <xs:annotation>
-    <xs:appinfo>ITxPT S02P06 AVMS service - Connection Monitoring operation XML Schema Definition Version 2.2.0</xs:appinfo>
+    <xs:appinfo>ITxPT S02P06 AVMS service - Connection Monitoring operation XML Schema Definition Version 2.3.0</xs:appinfo>
     <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
   </xs:annotation>
   <!-- Type definitions -->
   <xs:simpleType name="VersionType">
       <xs:restriction base="xs:string">
-        <xs:enumeration value="2.2.0"/>
-        <xs:enumeration value="2.2.1"/>
+        <xs:enumeration value="2.3.0"/>
       </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="ISO639-3String">
@@ -34,25 +38,30 @@
     </xs:restriction>
   </xs:simpleType> 
   <xs:complexType name="ConnectedVehicleLineInformationType">
-    <xs:sequence>
+    <xs:choice maxOccurs="unbounded">
       <xs:element name="LineRef" type="xs:string"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="LineName" type="LanguageStringType"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="LineShortName" type="LanguageStringType"/>
-      <xs:element minOccurs="0" name="LineNumber" type="xs:positiveInteger"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LineNumber" type="xs:positiveInteger"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="LineTTSName" type="LanguageStringType"/>
       <xs:element minOccurs="0" name="Direction" type="xs:string"/>
-    </xs:sequence>
+    </xs:choice>
+    <!-- Assert conditions to enforce multiplicity and uniqueness constraints -->
+    <xs:assert test="count(LineRef) = 1"/>
+    <xs:assert test="count(Direction) &lt;= 1"/>
   </xs:complexType>
   <xs:complexType name="ConnectedVehicleDestinationInformationType">
-    <xs:sequence>
+    <xs:choice maxOccurs="unbounded">
       <xs:element name="DestinationRef" type="xs:string"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DestinationName" type="LanguageStringType"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DestinationShortName" type="LanguageStringType"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DestinationTTSName" type="LanguageStringType"/>
-    </xs:sequence>
+    </xs:choice>
+    <!-- Assert conditions to enforce multiplicity and uniqueness constraints -->
+    <xs:assert test="count(DestinationRef) = 1"/>
   </xs:complexType>
   <xs:complexType name="MonitoredConnectionType">
-    <xs:sequence>
+    <xs:choice maxOccurs="unbounded">
       <xs:element name="RecordedAtTime" type="xs:dateTime"/>
       <xs:element name="ConnectionRef" type="xs:string"/>
       <xs:element minOccurs="0" name="CallRef" type="xs:string"/>
@@ -65,30 +74,56 @@
       <xs:element minOccurs="0" name="TransferTime" type="xs:time"/>
       <xs:element minOccurs="0" name="ConnectedVehicleCallRef" type="xs:string"/>
       <xs:element minOccurs="0" name="ConnectedVehicleJourneyRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="ConnectedVehiclePlannedDepartureTime" type="xs:dateTime"/>
       <xs:element minOccurs="0" name="ConnectedVehicleExpectedDepartureTime" type="xs:dateTime"/>
-      <xs:element maxOccurs="unbounded" name="ConnectedVehicleLineInformation" type="ConnectedVehicleLineInformationType"/>
-      <xs:element maxOccurs="unbounded" name="ConnectedVehicleDestinationInformation" type="ConnectedVehicleDestinationInformationType"/>
+      <xs:element minOccurs="0" name="ConnectedVehiclePlannedDeparturePlatform" type="xs:string"/>
+      <xs:element minOccurs="0" name="ConnectedVehicleJourneyIsCancelled" type="xs:boolean"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ConnectedVehicleLineInformation" type="ConnectedVehicleLineInformationType"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ConnectedVehicleDestinationInformation" type="ConnectedVehicleDestinationInformationType"/>
       <xs:element minOccurs="0" name="ConnectedVehicleTransportMode" type="xs:string"/>
       <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
-    </xs:sequence>
+    </xs:choice>
+    <!-- Assert conditions to enforce multiplicity and uniqueness constraints -->
+    <xs:assert test="count(RecordedAtTime) = 1"/>
+    <xs:assert test="count(ConnectionRef) = 1"/>
+    <xs:assert test="count(CallRef) &lt;= 1"/>
+    <xs:assert test="count(JourneyPatternRef) &lt;= 1"/>
+    <xs:assert test="count(VehicleJourneyRef) = 1"/>
+    <xs:assert test="count(VisitNumber) &lt;= 1"/>
+    <xs:assert test="count(Order) &lt;= 1"/>
+    <xs:assert test="count(ExpectedDepartureTime) &lt;= 1"/>
+    <xs:assert test="count(ProtectionState) &lt;= 1"/>
+    <xs:assert test="count(TransferTime) &lt;= 1"/>
+    <xs:assert test="count(ConnectedVehicleCallRef) &lt;= 1"/>
+    <xs:assert test="count(ConnectedVehicleJourneyRef) &lt;= 1"/>
+    <xs:assert test="count(ConnectedVehiclePlannedDepartureTime) &lt;= 1"/>
+    <xs:assert test="count(ConnectedVehicleExpectedDepartureTime) &lt;= 1"/>
+    <xs:assert test="count(ConnectedVehiclePlannedDeparturePlatform) &lt;= 1"/>
+    <xs:assert test="count(ConnectedVehicleJourneyIsCancelled) &lt;= 1"/>
+    <xs:assert test="count(ConnectedVehicleTransportMode) &lt;= 1"/>
+    <xs:assert test="count(Extensions) &lt;= 1"/>
   </xs:complexType>  
   <xs:complexType name="MonitoredConnectionCancellationType">
-    <xs:sequence>
+    <xs:all>
       <xs:element name="RecordedAtTime" type="xs:dateTime"/>
       <xs:element name="ConnectionRef" type="xs:string"/>
       <xs:element name="VehicleJourneyRef" type="xs:string"/>
       <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
-    </xs:sequence>
+    </xs:all>
   </xs:complexType>
   <!-- Main element definition -->
   <xs:element name="ConnectionMonitoringDelivery">
     <xs:complexType>
-      <xs:sequence>
+      <xs:choice maxOccurs="unbounded">
         <xs:element maxOccurs="unbounded" minOccurs="0" name="MonitoredConnection" type="MonitoredConnectionType"/>
         <xs:element maxOccurs="unbounded" minOccurs="0" name="MonitoredConnectionCancellation" type="MonitoredConnectionCancellationType"/>
         <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
-      </xs:sequence>
+      </xs:choice>
       <xs:attribute name="version" type="VersionType" use="required"/>
+      <!-- Assert conditions to enforce multiplicity and uniqueness constraints -->
+      <xs:assert test="count(MonitoredConnection) &gt;= 0"/>
+      <xs:assert test="count(MonitoredConnectionCancellation) &gt;= 0"/>
+      <xs:assert test="count(Extensions) &lt;= 1"/>
     </xs:complexType>
   </xs:element>
 </xs:schema>

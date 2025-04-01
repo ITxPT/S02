@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema version="1.0" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema  version="1.1"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+            xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+            elementFormDefault="qualified" 
+            vc:minVersion="1.1" 
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <xs:annotation>
-    <xs:appinfo>ITxPT S02P04 FMStoIP configuration service - pgninfo operation response XML Schema Definition Version 2.2.1</xs:appinfo>
+    <xs:appinfo>ITxPT S02P04 FMStoIP configuration service - pgninfo operation response XML Schema Definition Version 2.3.0</xs:appinfo>
     <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
   </xs:annotation>
   <!-- Type definitions -->
@@ -16,21 +21,24 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="SPNType"> 
-    <xs:sequence>
+    <xs:all>
       <xs:element name="Name" type="xs:string"/>
       <xs:element name="Unit" type="xs:string"/>
       <xs:element name="DecodeInPGN" type="xs:boolean"/>
-    </xs:sequence>
+    </xs:all>
     <xs:attribute name="id" type="SPNidType" use="required"/>
   </xs:complexType>
   <!-- Main element definition -->
   <xs:element name="PGNDetails">
     <xs:complexType>
-      <xs:sequence>
+      <xs:choice maxOccurs="unbounded">
         <xs:element name="PGNId" type="PGNHexType"/>
         <xs:element minOccurs="0" name="RepetitionRate" type="xs:positiveInteger"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" name="SPN" type="SPNType"/>
-      </xs:sequence>
+      </xs:choice>
+      <!-- Assert conditions to enforce multiplicity and uniqueness constraints -->
+      <xs:assert test="count(PGNId) = 1"/>
+      <xs:assert test="count(RepetitionRate) &lt;= 1"/>
     </xs:complexType>
   </xs:element>
 </xs:schema>

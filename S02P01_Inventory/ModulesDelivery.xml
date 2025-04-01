@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ModulesDelivery version="2.1.4">
+<ModulesDelivery version="2.2.0" atdatetime="2023-10-05T14:48:00" interval="10" release="Linden">
   <Module>
     <Type>VCG</Type>
     <Model>Model26</Model>

@@ -1,6 +1,7 @@
 {
   "retCode": 0,
-  "version": "2101",
+  "version": "3.0.0",
+  "swvers": "2.3.5",
   "hasVNC": 1,
   "hasShortcut": 1,
   "hasSound": 1,

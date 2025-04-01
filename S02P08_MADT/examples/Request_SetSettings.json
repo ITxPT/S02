@@ -1,7 +1,11 @@
 {
   "req": "SetSettings",
   "volume": "E12DE12D",
-  "brightness": 100,
-  "contrast": 140,
+  "brightness": 210,
+  "defaultActiveMode": "PRIMARY",
+  "activeMode": "PRIMARY",
+  "defaultVisualMode": "UNMUTE",
+  "visualMode": "UNMUTE",
+  "contrast": 150,
   "language": "fr"
 }

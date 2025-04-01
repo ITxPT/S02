@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema version="1.0" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema version="1.1" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
-    <xs:appinfo>ITxPT S02P04 FMStoIP provision service - standard response header XML Schema Definition Version 2.2.1</xs:appinfo>
+    <xs:appinfo>ITxPT S02P04 FMStoIP provision service - standard response header XML Schema Definition Version 2.3.0</xs:appinfo>
     <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
   </xs:annotation>
   <!-- Type definitions -->
   <xs:simpleType name="ResponseCodeType">
     <xs:restriction base="xs:string">
       <xs:enumeration value="SUCCESS"/>
+      <xs:enumeration value="PARTIAL_SUCCESS"/>
       <xs:enumeration value="FAILURE"/>
       <xs:enumeration value="FAILURE_REQUEST"/>
       <xs:enumeration value="FAILURE_INTERNAL"/>
@@ -16,11 +17,11 @@
     </xs:restriction>
   </xs:simpleType>  
   <xs:complexType name="ResultType">
-    <xs:sequence>
+    <xs:all>
       <xs:element name="Id" type="xs:string"/>
       <xs:element name="FMSResponseCode" type="ResponseCodeType"/>
       <xs:element minOccurs="0" name="ResponseMessage" type="xs:string"/>
-    </xs:sequence>
+    </xs:all>
   </xs:complexType>
   <!-- Main element definition -->
   <xs:element name="FMStoIPResponse">

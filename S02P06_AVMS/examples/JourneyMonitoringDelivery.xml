@@ -1,11 +1,11 @@
-<JourneyMonitoringDelivery version="2.2.1">
+<JourneyMonitoringDelivery version="2.3.0">
   <!-- ITxPT S02P06 AVMS service - Journey Monitoring operation XML Example -->
   <MonitoredJourney>
     <RecordedAtTime>2019-10-24T12:12:12</RecordedAtTime>
     <ItemIdentifier>2</ItemIdentifier>
     <PatternRef>9311</PatternRef>
     <JourneyRef>9</JourneyRef>
-    <VehicleJourneyRef>9310</VehicleJourneyRef>
+    <VehicleJourneyName>9310</VehicleJourneyName>
     <JourneyNote>Note</JourneyNote>
     <HeadwayService>true</HeadwayService>
     <OriginPlannedDepartureTime>2019-10-24T12:10:00</OriginPlannedDepartureTime>
@@ -35,6 +35,13 @@
       <ExpectedArrivalTime>2019-10-24T12:30:00</ExpectedArrivalTime>
       <PlannedDepartureTime>2019-10-24T12:51:12</PlannedDepartureTime>
       <ExpectedDepartureTime>2019-10-24T12:12:12</ExpectedDepartureTime>
+      <ExpectedArrivalPlatform>Landvetter Airport 1</ExpectedArrivalPlatform>
+      <ExpectedExitSide>Right</ExpectedExitSide>
+      <ConnectedTransportModes>
+        <ConnectedTransportMode>BUS</ConnectedTransportMode>
+        <ConnectedTransportMode>METRO</ConnectedTransportMode>
+        <ConnectedTransportMode>AIR</ConnectedTransportMode>
+      </ConnectedTransportModes>
     </MonitoredCall>
     <OnwardCalls>
       <OnwardCall>
@@ -44,6 +51,13 @@
         <ExpectedArrivalTime>2019-10-24T12:30:00</ExpectedArrivalTime>
         <PlannedDepartureTime>2019-10-24T12:51:12</PlannedDepartureTime>
         <ExpectedDepartureTime>2019-10-24T12:12:12</ExpectedDepartureTime>
+        <ExpectedArrivalPlatform>Landvetter Airport 2</ExpectedArrivalPlatform>
+        <ExpectedExitSide>Right</ExpectedExitSide>
+        <ConnectedTransportModes>
+          <ConnectedTransportMode>BUS</ConnectedTransportMode>
+          <ConnectedTransportMode>METRO</ConnectedTransportMode>
+          <ConnectedTransportMode>AIR</ConnectedTransportMode>
+        </ConnectedTransportModes>
       </OnwardCall>
       <!-- […] -->
       <OnwardCall>
@@ -51,8 +65,6 @@
         <Order>31</Order>
         <PlannedArrivalTime>2019-10-24T12:25:00</PlannedArrivalTime>
         <ExpectedArrivalTime>2019-10-24T12:30:00</ExpectedArrivalTime>
-        <PlannedDepartureTime>2019-10-24T12:51:12</PlannedDepartureTime>
-        <ExpectedDepartureTime>2019-10-24T12:12:12</ExpectedDepartureTime>
       </OnwardCall>
     </OnwardCalls>
   </MonitoredJourney>
