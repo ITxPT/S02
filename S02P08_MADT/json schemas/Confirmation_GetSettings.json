@@ -17,11 +17,18 @@
         "retCode": {
             "$id": "#/properties/retCode",
             "type": "integer",
-            "enum": [0, 1, 2, 3, 4]
+            "enum": [
+                0,
+                1,
+                2,
+                3,
+                4
+            ]
         },
         "volume": {
             "$id": "#/properties/volume",
-            "type": "string"
+            "type": "string",
+            "pattern": "^0x[0-9A-Fa-f]{8}$"
         },
         "brightness": {
             "$id": "#/properties/brightness",
@@ -42,5 +49,6 @@
             "examples": [
                 "en"
             ]
-        }    }
+        }
+    }
 }

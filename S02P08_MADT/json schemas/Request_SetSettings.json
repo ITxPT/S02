@@ -21,9 +21,8 @@
         },
         "volume": {
             "$id": "#/properties/volume",
-            "type": "number",
-            "minimum": 0,
-            "maximum": 65535
+            "type": "string",
+            "pattern": "^0x[0-9A-Fa-f]{8}$"
         },
         "brightness": {
             "$id": "#/properties/brightness",
