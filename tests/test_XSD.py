@@ -33,9 +33,10 @@ def get_schema_versions_from_string(file_content):
     return version
 
 
-def clone_repo(repo_url, local_dir):
+def clone_repo(repo_url, local_dir, branch="main"):
     """Clone the repository to access the previous commit."""
-    return git.Repo.clone_from(repo_url, local_dir)
+    repo = git.Repo.clone_from(repo_url, local_dir, branch=branch)
+    return repo
 
 
 def get_file_commits(repo, file_path, max_count):
@@ -54,7 +55,7 @@ def xsd_check():
     """Check the versions of .xsd files in a Git repository."""
 
     # Clone the repository to access the previous commit
-    repo = clone_repo("https://github.com/ITxPT/S02/tree/Sequoia", "temp_repo")
+    repo = clone_repo("https://github.com/ITxPT/S02.git", "temp_repo", branch="Sequoia")
 
     # List to store error messages
     errors = []
