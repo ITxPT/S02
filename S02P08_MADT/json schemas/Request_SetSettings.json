@@ -26,7 +26,7 @@
         "volume": {
             "$id": "#/properties/volume",
             "type": "string",
-            "pattern": "^(0x)?[0-9A-Fa-f]{1,8}$"
+            "pattern": "^0x[0-9A-Fa-f]{8}$"
         },
         "brightness": {
             "$id": "#/properties/brightness",
@@ -51,22 +51,36 @@
         "defaultActiveMode": {
             "$id": "#/properties/defaultActiveMode",
             "type": "string",
-            "enum": ["PRIMARY", "SUBORDINATED"]
+            "enum": [
+                "PRIMARY",
+                "SUBORDINATED"
+            ]
         },
         "activeMode": {
             "$id": "#/properties/activeMode",
             "type": "string",
-            "enum": ["PRIMARY", "SUBORDINATED"]
+            "enum": [
+                "PRIMARY",
+                "SUBORDINATED"
+            ]
         },
         "defaultVisualMode": {
             "$id": "#/properties/defaultVisualMode",
             "type": "string",
-            "enum": ["MUTE", "UNMUTE", "DEGRADED"]
+            "enum": [
+                "MUTE",
+                "UNMUTE",
+                "DEGRADED"
+            ]
         },
         "visualMode": {
             "$id": "#/properties/visualMode",
             "type": "string",
-            "enum": ["MUTE", "UNMUTE", "DEGRADED"]
+            "enum": [
+                "MUTE",
+                "UNMUTE",
+                "DEGRADED"
+            ]
         }
     }
 }

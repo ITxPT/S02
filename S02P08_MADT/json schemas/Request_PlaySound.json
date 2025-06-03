@@ -20,8 +20,8 @@
         "soundFlags": {
             "$id": "#/properties/soundFlags",
             "type": "string",
-            "enum": ["00001", "00002", "00010", "10000"]
-        },  
+            "pattern": "^0x[0-9A-Fa-f]{8}$"
+        },
         "soundId": {
             "$id": "#/properties/soundId",
             "type": "string",
