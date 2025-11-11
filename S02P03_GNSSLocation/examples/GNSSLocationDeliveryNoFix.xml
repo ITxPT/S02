@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ITxPT S02P03 GNSSLocation service - GNSSLocation Delivery XML Example -->
+<GNSSLocationDelivery version="2.2.1">
+  <GNSSLocation>
+    <Latitude>
+      <Degree />
+      <Direction />
+    </Latitude>
+    <Longitude>
+      <Degree />
+      <Direction />
+    </Longitude>
+    <Time>08:05:30</Time>
+    <Date>2019-10-24</Date>
+    <SignalQuality>aGPS</SignalQuality>
+    <Fix>NoFix</Fix>
+    <NumberOfSatellites>0</NumberOfSatellites>
+    <GNSSType>GPS</GNSSType>
+    <GNSSCoordinateSystem>WGS84</GNSSCoordinateSystem>
+  </GNSSLocation>
+  <Extensions />
+</GNSSLocationDelivery>

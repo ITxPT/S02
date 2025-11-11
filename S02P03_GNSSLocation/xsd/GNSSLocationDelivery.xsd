@@ -15,6 +15,7 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="N"/>
       <xs:enumeration value="S"/>
+      <xs:enumeration value=""/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="DegreeLatitudeType">
@@ -27,6 +28,7 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="E"/>
       <xs:enumeration value="W"/>
+      <xs:enumeration value=""/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="DegreeLongitudeType">
@@ -35,15 +37,26 @@
       <xs:maxInclusive value="+180.0"/>     
     </xs:restriction>
   </xs:simpleType>
+   <xs:simpleType name="DegreeEmptyType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OptDegreeLatitudeType">
+    <xs:union memberTypes="DegreeLatitudeType DegreeEmptyType"/>
+  </xs:simpleType>
+  <xs:simpleType name="OptDegreeLongitudeType">
+    <xs:union memberTypes="DegreeLongitudeType DegreeEmptyType"/>
+  </xs:simpleType>
   <xs:complexType name="LatitudeType">
     <xs:sequence>
-      <xs:element name="Degree" type="DegreeLatitudeType"/>
+      <xs:element name="Degree" type="OptDegreeLatitudeType"/>
       <xs:element name="Direction" type="DirectionLatitudeType"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="LongitudeType">
     <xs:sequence>
-      <xs:element name="Degree" type="DegreeLongitudeType"/>
+      <xs:element name="Degree" type="OptDegreeLongitudeType"/>
       <xs:element name="Direction" type="DirectionLongitudeType"/>
     </xs:sequence>
   </xs:complexType>
