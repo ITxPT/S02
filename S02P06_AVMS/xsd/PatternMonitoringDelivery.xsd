@@ -69,7 +69,7 @@
   <xs:element name="PatternMonitoringDelivery">
     <xs:complexType>
       <xs:all>
-        <xs:element name="MonitoredPattern"  type="MonitoredPatternType"/>
+        <xs:element name="MonitoredPattern"  type="MonitoredPatternType" nillable="true"/>
         <xs:element minOccurs="0" name="MonitoredPatternCancellation" type="MonitoredPatternCancellationType"/>
         <xs:element minOccurs="0" name="Extensions" type="xs:anyType"/>
       </xs:all>

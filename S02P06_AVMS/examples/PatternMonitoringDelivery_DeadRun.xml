@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ITxPT S02P06 AVMS service - Pattern Monitoring operation XML Example - DeadRun state -->
-<PatternMonitoringDelivery version="2.2.1">
+<PatternMonitoringDelivery version="2.3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <MonitoredPattern xsi:nil="true"/>
 </PatternMonitoringDelivery>

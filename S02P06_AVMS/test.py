@@ -68,5 +68,6 @@ print_result("examples/JourneyMonitoringDelivery.xml", "xsd/JourneyMonitoringDel
 print_result("examples/JourneyMonitoringDelivery_NoOnwardCalls.xml", "xsd/JourneyMonitoringDelivery.xsd")
 print_result("examples/VehicleMonitoringDelivery.xml", "xsd/VehicleMonitoringDelivery.xsd")
 print_result("examples/PatternMonitoringDelivery.xml", "xsd/PatternMonitoringDelivery.xsd")
+print_result("examples/PatternMonitoringDelivery_DeadRun.xml", "xsd/PatternMonitoringDelivery.xsd")
 print_result("examples/PlannedPatternDelivery.xml", "xsd/PlannedPatternDelivery.xsd")
 print_result("examples/RunMonitoringDelivery.xml", "xsd/RunMonitoringDelivery.xsd")
