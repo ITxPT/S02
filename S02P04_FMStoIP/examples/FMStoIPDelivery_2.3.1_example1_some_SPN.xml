@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ITxPT S02P04 FMStoIP provision service - FMStoIP operation XML Example -->
-<FMStoIPDelivery version="2.3.1">
+<FMStoIPDelivery version="2.3.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <RelativeTime>100</RelativeTime>
   <FMStoIP FMSVersion="0505" VIN="YV3R4A5131A008108">
     <Frame Status="OK">
@@ -15,6 +15,7 @@
       </SPN>
       <SPN id="595">
         <Name>Cruise control active</Name>
+        <Unit xsi:nil="true"/>
         <Value>switched off</Value>
       </SPN>
     </Frame>
@@ -23,12 +24,12 @@
       <SA>AC</SA>
       <Data>FFFF9F1AA0FFFFFF</Data>
       <RelativeTime>1080</RelativeTime>
-      <SPN id="84">
+      <SPN id="513">
         <Name>Actual Engine – Percent Torque</Name>
         <Unit>%</Unit>
         <Value>34</Value>
       </SPN>
-      <SPN id="84">
+      <SPN id="190">
         <Name>Engine speed</Name>
         <Unit>rpm</Unit>
         <Value>852</Value>

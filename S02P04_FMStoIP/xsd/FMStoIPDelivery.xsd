@@ -6,7 +6,7 @@
             vc:minVersion="1.1" 
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <xs:annotation>
-    <xs:appinfo>ITxPT S02P04 FMStoIP provision service - FMStoIP operation XML Schema Definition Version 2.3.0</xs:appinfo>
+    <xs:appinfo>ITxPT S02P04 FMStoIP provision service - FMStoIP operation XML Schema Definition Version 2.3.1</xs:appinfo>
     <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
   </xs:annotation>
   <!-- Type definitions -->
@@ -33,14 +33,26 @@
       <xs:enumeration value="NotSeen"/>
     </xs:restriction>
   </xs:simpleType>
+  <!-- Type definitions, ensure that SPN id's are within expected ranges -->
   <xs:simpleType name="SPNidType">
-    <xs:restriction base="xs:positiveInteger">
-      <xs:maxInclusive value="9999"/>     
-    </xs:restriction>
+    <xs:union>
+        <xs:simpleType>
+            <xs:restriction base="xs:positiveInteger">
+                <xs:minInclusive value="1"/>
+                <xs:maxInclusive value="9999"/>
+            </xs:restriction>    
+        </xs:simpleType>
+        <xs:simpleType>
+            <xs:restriction base="xs:positiveInteger">
+                <xs:minInclusive value="520192"/>
+                <xs:maxInclusive value="524287"/>
+            </xs:restriction>    
+        </xs:simpleType>
+    </xs:union>
   </xs:simpleType>
-  <xs:simpleType name="PGNHexType">
+    <xs:simpleType name="PGNHexType">
     <xs:restriction base="xs:token">
-      <xs:pattern value="[0-9A-Fa-f]{4}"/>
+      <xs:pattern value="[0-9A-F]{4}"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="SAHexType">
@@ -50,18 +62,20 @@
   </xs:simpleType>
   <xs:simpleType name="PGNDATAHexType">
     <xs:restriction base="xs:token">
-      <xs:pattern value="[0-9A-Fa-f]{16,}"/>
+      <xs:pattern value="[0-9A-F]{16}"/>
       <xs:pattern value=""/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="HexDataType">
     <xs:restriction base="xs:token">
-      <xs:pattern value="[0-9A-Fa-f]{0,}"/>
+      <xs:pattern value="[0-9A-F]{1,16}"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="VINFlexType">
     <xs:restriction base="xs:string">
       <xs:maxLength value="17" />
+      <!-- VIN type definitionsaccording to ISO 3779, here we only allow 17 character long VIN's, however it seams regexp counts 0-16 as 17 in this case -->
+      <xs:pattern value="[A-Z0-9]+[^Q,I,O]{16}"/>
     </xs:restriction>
   </xs:simpleType>  
   <xs:complexType name="ValidType"> 
@@ -75,7 +89,7 @@
   <xs:complexType name="SPNType"> 
     <xs:all>
       <xs:element minOccurs="0" name="Name" type="xs:string"/>
-      <xs:element minOccurs="0" name="Unit" type="xs:string"  nillable="true"/>
+      <xs:element name="Unit" type="xs:string"  nillable="true"/>
       <xs:element name="Value" type="ValidType"/>
       <xs:element minOccurs="0" name="RawValue" type="HexDataType"/>
     </xs:all>
