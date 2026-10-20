@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema  version="1.1" 
+<xs:schema  version="1.2" 
             xmlns:xs="http://www.w3.org/2001/XMLSchema" 
             xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
             elementFormDefault="qualified" 
             vc:minVersion="1.1" 
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <xs:annotation>
-    <xs:appinfo>ITxPT S02P07 APC service - Passenger Vehicle Count operation XML Schema Definition Version 2.2.0</xs:appinfo>
+    <xs:appinfo>ITxPT S02P07 APC service - Passenger Vehicle Count operation XML Schema Definition Version 2.2.X</xs:appinfo>
     <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
   </xs:annotation>
   <!-- Type definitions -->
@@ -14,6 +14,7 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="2.2.0"/>
       <xs:enumeration value="2.2.1"/>
+      <xs:enumeration value="2.2.2"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="ObjectClassType">
