@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema  version="1.1"
+<xs:schema  version="1.2"
             xmlns:xs="http://www.w3.org/2001/XMLSchema" 
             xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
             elementFormDefault="qualified" 
@@ -9,11 +9,22 @@
     <xs:appinfo>ITxPT S02P04 FMStoIP configuration service - pgninfo operation response XML Schema Definition Version 2.3.0</xs:appinfo>
     <xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
   </xs:annotation>
-  <!-- Type definitions -->
+  <!-- Type definitions, ensure that SPN id's are within expected ranges -->
   <xs:simpleType name="SPNidType">
-    <xs:restriction base="xs:positiveInteger">
-      <xs:maxInclusive value="9999"/>     
-    </xs:restriction>
+    <xs:union>
+        <xs:simpleType>
+            <xs:restriction base="xs:positiveInteger">
+                <xs:minInclusive value="1"/>
+                <xs:maxInclusive value="9999"/>
+            </xs:restriction>    
+        </xs:simpleType>
+        <xs:simpleType>
+            <xs:restriction base="xs:positiveInteger">
+                <xs:minInclusive value="520192"/>
+                <xs:maxInclusive value="524287"/>
+            </xs:restriction>    
+        </xs:simpleType>
+    </xs:union>
   </xs:simpleType>
   <xs:simpleType name="PGNHexType">
     <xs:restriction base="xs:token">
@@ -23,7 +34,7 @@
   <xs:complexType name="SPNType"> 
     <xs:all>
       <xs:element name="Name" type="xs:string"/>
-      <xs:element name="Unit" type="xs:string"/>
+      <xs:element name="Unit" type="xs:string" nillable="true"/>
       <xs:element name="DecodeInPGN" type="xs:boolean"/>
     </xs:all>
     <xs:attribute name="id" type="SPNidType" use="required"/>
