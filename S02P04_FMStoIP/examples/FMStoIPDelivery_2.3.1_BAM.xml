@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ITxPT S02P04 FMStoIP provision service - FMStoIP operation XML Example, BAM data longer than 8 bytes (VIN, PGN FEEC) -->
+<FMStoIPDelivery version="2.3.1">
+  <RelativeTime>100</RelativeTime>
+  <FMStoIP FMSVersion="0505" VIN="YV3R4A5131A008108">
+    <Frame Status="OK">
+      <PGN>FEEC</PGN>
+      <SA>00</SA>
+      <Data>59563352344135313331413030383130382A</Data>
+      <RelativeTime>1008</RelativeTime>
+    </Frame>
+  </FMStoIP>
+</FMStoIPDelivery>
