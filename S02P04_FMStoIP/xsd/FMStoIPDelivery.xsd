@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema version="1.1"
+<xs:schema  version="1.2"
             xmlns:xs="http://www.w3.org/2001/XMLSchema" 
             xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
             elementFormDefault="qualified" 
@@ -62,8 +62,7 @@
   </xs:simpleType>
   <xs:simpleType name="PGNDATAHexType">
     <xs:restriction base="xs:token">
-      <xs:pattern value="[0-9A-F]{16}"/>
-      <xs:pattern value=""/>
+      <xs:pattern value="[0-9A-F]{16,}"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="HexDataType">
@@ -73,12 +72,11 @@
   </xs:simpleType>
   <xs:simpleType name="VINFlexType">
     <xs:restriction base="xs:string">
-      <xs:maxLength value="17" />
-      <!-- VIN type definitionsaccording to ISO 3779, here we only allow 17 character long VIN's, however it seams regexp counts 0-16 as 17 in this case -->
-      <xs:pattern value="[A-Z0-9]+[^Q,I,O]{16}"/>
+      <!-- VIN according to ISO 3779: exactly 17 characters, A-Z and 0-9 excluding I, O and Q -->
+      <xs:pattern value="[A-HJ-NPR-Z0-9]{17}"/>
     </xs:restriction>
-  </xs:simpleType>  
-  <xs:complexType name="ValidType"> 
+  </xs:simpleType>
+  <xs:complexType name="ValidType">
     <xs:simpleContent>
       <xs:extension base="xs:string">
         <xs:attribute name="valid" type="xs:boolean" use="optional">
@@ -89,7 +87,7 @@
   <xs:complexType name="SPNType"> 
     <xs:all>
       <xs:element minOccurs="0" name="Name" type="xs:string"/>
-      <xs:element name="Unit" type="xs:string"  nillable="true"/>
+      <xs:element minOccurs="0" name="Unit" type="xs:string" nillable="true"/>
       <xs:element name="Value" type="ValidType"/>
       <xs:element minOccurs="0" name="RawValue" type="HexDataType"/>
     </xs:all>
@@ -99,8 +97,8 @@
     <xs:choice maxOccurs="unbounded">
       <xs:element name="PGN" type="PGNHexType"/>
       <xs:element name="SA" type="SAHexType"/>
-      <xs:element name="Data" type="PGNDATAHexType"/>
-      <xs:element name="RelativeTime" type="xs:nonNegativeInteger"/>
+      <xs:element name="Data" type="PGNDATAHexType" nillable="true"/>
+      <xs:element name="RelativeTime" type="xs:nonNegativeInteger" nillable="true"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="SPN" type="SPNType"/>
     </xs:choice>
     <xs:attribute name="Status" type="StatusType" use="required"/>
@@ -109,6 +107,13 @@
     <xs:assert test="count(SA) = 1"/>
     <xs:assert test="count(Data) = 1"/>
     <xs:assert test="count(RelativeTime) = 1"/>
+    <!-- Assertion to enforce that:
+      - If Status is 'NotSeen': SA must be 'FE', Data and RelativeTime must have
+        xsi:nil="true" and SPN elements must be omitted.
+      - If Status is not 'NotSeen': Data and RelativeTime must NOT have xsi:nil="true". -->
+    <xs:assert test="if (@Status = 'NotSeen')
+                     then (SA = 'FE' and Data/@xsi:nil = true() and RelativeTime/@xsi:nil = true() and not(SPN))
+                     else (not(Data/@xsi:nil = true()) and not(RelativeTime/@xsi:nil = true()))"/>
   </xs:complexType>  
   <xs:complexType name="FMStoIPType">
     <xs:choice maxOccurs="unbounded">
