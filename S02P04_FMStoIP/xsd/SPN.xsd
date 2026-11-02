@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema version="1.0" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema version="1.1" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 	<xs:annotation>
 		<xs:appinfo>ITxPT S02P04 FMStoIP configuration service - addspndecode operation XML Schema Definition Version 2.3.0</xs:appinfo>
 		<xs:documentation>ITxPT service interface for standardized interoperability in public transport - XML schema</xs:documentation>
 	</xs:annotation>
-	<!-- Type definitions -->
-    <xs:simpleType name="SPNidType">
-   		 <xs:restriction base="xs:positiveInteger">
-      	   <xs:maxInclusive value="9999"/>     
-         </xs:restriction>
-  	</xs:simpleType>
+	<!-- Type definitions, ensure that SPN id's are within expected ranges -->
+	<xs:simpleType name="SPNidType">
+	  <xs:union>
+	      <xs:simpleType>
+	          <xs:restriction base="xs:positiveInteger">
+	              <xs:minInclusive value="1"/>
+	              <xs:maxInclusive value="9999"/>
+	          </xs:restriction>    
+	      </xs:simpleType>
+	      <xs:simpleType>
+	          <xs:restriction base="xs:positiveInteger">
+	              <xs:minInclusive value="520192"/>
+	              <xs:maxInclusive value="524287"/>
+	          </xs:restriction>    
+	      </xs:simpleType>
+	  </xs:union>
+	</xs:simpleType>
 	<!-- Main element definition -->
 	<xs:element name="SPN">
 		<xs:complexType>

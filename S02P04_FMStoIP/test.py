@@ -78,3 +78,5 @@ print_result("examples/FMStoIPDelivery_2.3.1_example1_no_SPN.xml", "xsd/FMStoIPD
 print_result("examples/FMStoIPDelivery_2.3.1_example1_some_SPN.xml", "xsd/FMStoIPDelivery.xsd")
 print_result("examples/FMStoIPDelivery_2.3.1_on-change_example2_full_SPN.xml", "xsd/FMStoIPDelivery.xsd")
 print_result("examples/FMStoIPDelivery_2.3.1_on-change_example2_no_SPN.xml", "xsd/FMStoIPDelivery.xsd")
+print_result("examples/FMStoIPDelivery_2.3.1_NotSeen.xml", "xsd/FMStoIPDelivery.xsd")
+print_result("examples/FMStoIPDelivery_2.3.1_BAM.xml", "xsd/FMStoIPDelivery.xsd")
